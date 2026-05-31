@@ -5,7 +5,6 @@ using UnityEngine;
 //
 // Rules:
 //  - Type everything yourself. No copy-paste from the demo.
-//  - Use AI only to *explain* something you're stuck on, not to write the code for you.
 
 public class Session01_Exercise : MonoBehaviour
 {
