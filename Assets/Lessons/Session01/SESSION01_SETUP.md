@@ -1,86 +1,78 @@
 # Session 1 — Editor Setup Steps
 
-Do these once before the session. Takes about 2 minutes.
+**Session scope:** Variables, types, arithmetic, conditionals, reading an error.  
+Do these steps once before the session. Takes about 2 minutes.
 
 ---
 
 ## 1. Open the Console window
 
 **Window → General → Console**  
-Dock it somewhere visible (bottom of the screen works well). This is where `Debug.Log` output appears.
+Dock it somewhere visible (bottom panel works well). This is where `Debug.Log` output appears.
 
 ---
 
 ## 2. Create an empty GameObject for the demo
 
 1. In the **Hierarchy** panel, right-click → **Create Empty**.
-2. Rename it `LessonRunner` (click the name in the Hierarchy and press F2, or double-click it).
+2. Rename it `LessonRunner` — this same object gets reused every session, just swap the script.
 
 ---
 
 ## 3. Attach the demo script
 
-1. Select `LessonRunner` in the Hierarchy so it shows in the **Inspector**.
+1. Select `LessonRunner` in the Hierarchy.
 2. In the **Project** panel, navigate to `Assets/Lessons/Session01/`.
 3. Drag **`Session01_Demo`** onto the Inspector, or click **Add Component → Scripts → Session01_Demo**.
 
-You should see the component appear in the Inspector with no fields (that's fine — all variables are declared inside `Start()`).
+---
+
+## 4. Press Play and confirm output
+
+**Expected Console output:**
+```
+=== Game Start ===
+Alex — Health: 100  Speed: 6.5
+Alive: True
+--- Took 35 damage ---
+Health is now: 65
+=== Status Check ===
+Status: OK
+Still alive: True
+```
+
+If you see those lines in order, the script is working correctly.
 
 ---
 
-## 4. Press Play and check the Console
+## 5. Error demo — what to do
 
-Click the **Play** button (▶) at the top of the editor.
-
-**Expected Console output (in order):**
+Open `Session01_Demo.cs`. Near the bottom, find:
 ```
-Name:   Alex
-Health: 100
-Speed:  4.5
-Alive:  True
---- After taking 25 damage ---
-Health is now: 75
-Score: 30   Half of 50: 25
+// imt broken = 99;
 ```
-
-If you see those lines, the script is working. Press Play again (or the ▶ button) to stop.
-
----
-
-## 5. Demo the deliberate error
-
-Open `Session01_Demo.cs` in your editor. Find the line near the bottom:
-```
-// imt brokenVariable = 99;
-```
-Remove the `//` so it reads:
-```
-imt brokenVariable = 99;
-```
-Save the file. Unity recompiles — the Play button greys out and the Console shows a red error like:
+Remove the `//` and save. The Play button greys out and the Console shows:
 > `The type or namespace name 'imt' could not be found`
 
-Walk the class through reading it: *what file, what line, what does the message say?*  
-Re-add the `//` and save to restore the project.
+Walk students through reading it — file name, line number, message text.  
+Re-add the `//` and save to restore. Play button returns.
 
 ---
 
-## 6. Swapping in the exercise script (students' turn)
+## 6. Switching to the exercise
 
-When it's time for the solo exercise:
+When it's time for students to work independently:
 
 1. Select `LessonRunner` in the Hierarchy.
-2. In the Inspector, click the **⋮ (three-dot menu)** on the `Session01_Demo` component → **Remove Component**.
-3. Drag **`Session01_Exercise`** onto the Inspector (same as step 3 above).
-4. Each student opens `Session01_Exercise.cs` in their own editor and fills in the TODOs.
-5. When they press Play, their output appears in their Console.
+2. In the Inspector, click the **⋮ menu** on the `Session01_Demo` component → **Remove Component**.
+3. Drag **`Session01_Exercise`** onto `LessonRunner`.
+4. Students open `Session01_Exercise.cs` in their own editors and work through the TODOs.
 
-After ~10 minutes, show `Session01_Exercise_Solution.cs` as a reference — attach it the same way if you want to demo it running.
+To demo the solution afterward: remove `Session01_Exercise` and attach `Session01_Exercise_Solution` from the `Solutions/Session01/` folder (local only — not on GitHub).
 
 ---
 
-## Notes for future sessions
+## Notes
 
-- Each session gets its own folder: `Assets/Lessons/Session02/`, `Session03/`, etc.
-- The same `LessonRunner` GameObject can be reused — just swap the attached script each time.
-- Keep all demo and exercise scripts in their session folder so students can revisit earlier sessions.
+- The **Guide** (`Session01_Guide.md`) has the full instructor script including what to say, timing, and common student confusions. Read it before the session.
+- Future sessions follow the same pattern: new folder `Session02/`, same `LessonRunner` object, swap the script.

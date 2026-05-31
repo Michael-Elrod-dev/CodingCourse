@@ -1,66 +1,87 @@
 using UnityEngine;
 
-// Session 1 Exercise — fill in every TODO below.
-// When you're done, press Play and check the Console.
+// Session 1 Exercise — Variables, Types & Conditionals
 //
-// Rules:
-//  - Type everything yourself. No copy-paste from the demo.
+// Work through each part in order.
+// Type everything yourself — no copy-paste from the demo.
+// Press Play after each part to check your output before moving on.
+// Ask a neighbour before asking the instructor. Struggle a little first.
 
 public class Session01_Exercise : MonoBehaviour
 {
     void Start()
     {
-        // ---------------------------------------------------------------
+        // =====================================================================
         // PART 1 — Declare your variables
-        // ---------------------------------------------------------------
+        // Declare ALL of the following (pick your own values):
+        //   - a string called characterName
+        //   - an int    called level          (1–10)
+        //   - an int    called health         (50–150)
+        //   - a float   called critChance     (try 0.25f)
+        //   - a bool    called isPlayerOne
+        // =====================================================================
 
-        // TODO: Declare a string called characterName and give it any name you like.
-
-
-        // TODO: Declare an int called score and give it a starting value.
-
-
-        // TODO: Declare a bool called hasKey and set it to false.
-
-
-        // ---------------------------------------------------------------
-        // PART 2 — Print the starting values
-        // ---------------------------------------------------------------
-
-        // TODO: Use Debug.Log to print characterName.
+        // TODO
 
 
-        // TODO: Use Debug.Log to print score.
+        // =====================================================================
+        // PART 2 — Log your starting state
+        // Print all five variables to the Console.
+        // Make the output readable — label each value.
+        // Example format: "Alex | Level: 3 | Health: 100"
+        // =====================================================================
+
+        // TODO
 
 
-        // TODO: Use Debug.Log to print hasKey.
+        // =====================================================================
+        // PART 3 — Arithmetic
+        // Make these three things happen (in this order):
+        //   1. The player takes 45 damage    (subtract from health)
+        //   2. The player gains a level      (add 1 to level)
+        //   3. Crit chance improves by 0.10f (add to critChance)
+        // =====================================================================
+
+        // TODO
 
 
-        // ---------------------------------------------------------------
-        // PART 3 — Change the values
-        // ---------------------------------------------------------------
+        // =====================================================================
+        // PART 4 — Log the updated state
+        // Print health, level, and critChance again so you can see the changes.
+        // =====================================================================
 
-        // TODO: Add 50 to score (hint: score = score + 50).
-
-
-        // TODO: Set hasKey to true (the character just picked one up).
+        // TODO
 
 
-        // ---------------------------------------------------------------
-        // PART 4 — Print the updated values
-        // ---------------------------------------------------------------
+        // =====================================================================
+        // PART 5 — Health status (if / else if / else)
+        // Write a chain that logs a status message based on health:
+        //   health <= 0        → "Status: Dead"
+        //   health < 30        → "Status: Critical"
+        //   health < 60        → "Status: Hurt"
+        //   anything else      → "Status: Healthy"
+        // =====================================================================
 
-        // TODO: Print score again so you can see it changed.
+        // TODO
 
 
-        // TODO: Print hasKey again so you can see it changed.
+        // =====================================================================
+        // PART 6 — Combined condition
+        // Declare a bool called hasRevive and set it to false.
+        // Write ONE if statement that checks: is health <= 0 AND no revive?
+        // If true, log "Game over."
+        // If false, log "Still fighting."
+        // =====================================================================
+
+        // TODO
 
 
-        // ---------------------------------------------------------------
-        // PART 5 — Deliberate error
+        // =====================================================================
+        // PART 7 — Deliberate error
         // Uncomment the line below, save, and read the error in the Console.
-        // Then re-comment it so the project compiles again.
-        // ---------------------------------------------------------------
-        // strng oops = "this won't compile";
+        // Be ready to answer: which file? which line? what is the error saying?
+        // Re-comment it when you're done so the project compiles again.
+        // =====================================================================
+        // sting playerTag = "hero";
     }
 }

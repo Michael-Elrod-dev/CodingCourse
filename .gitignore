@@ -108,4 +108,5 @@ InitTestScene*.unity*
 
 /Solutions/
 Idea.md
-Session01_Demo.cs
+*_Demo.cs
+*_Guide.md
