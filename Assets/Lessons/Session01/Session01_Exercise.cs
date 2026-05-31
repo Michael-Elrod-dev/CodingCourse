@@ -3,9 +3,8 @@ using UnityEngine;
 // Session 1 Exercise — Variables, Types & Conditionals
 //
 // Work through each part in order.
-// Type everything yourself — no copy-paste from the demo.
+// Type everything yourself — no copy-paste.
 // Press Play after each part to check your output before moving on.
-// Ask a neighbour before asking the instructor. Struggle a little first.
 
 public class Session01_Exercise : MonoBehaviour
 {
@@ -77,11 +76,108 @@ public class Session01_Exercise : MonoBehaviour
 
 
         // =====================================================================
-        // PART 7 — Deliberate error
-        // Uncomment the line below, save, and read the error in the Console.
-        // Be ready to answer: which file? which line? what is the error saying?
-        // Re-comment it when you're done so the project compiles again.
+        // PART 7 — Error Gauntlet
+        //
+        // 10 broken code snippets. Work through them one at a time:
+        //   1. Uncomment the block (remove the // from every line in that challenge)
+        //   2. Save — read what the Console or compiler tells you
+        //   3. Fix the code (edit it — do NOT just re-comment it)
+        //   4. Press Play to confirm correct output
+        //   5. Leave the fixed code in place and move to the next challenge
+        //
+        // Challenges 1–8 are compile errors — Unity won't run at all until fixed.
+        // Challenges 9–10 compile fine but produce WRONG output. Expected output
+        // is stated in the comment. You have to reason through why the logic is
+        // wrong, not just read a red error message.
+        //
+        // Work independently. You have everything you need from this session.
         // =====================================================================
-        // sting playerTag = "hero";
+
+
+        // --- Challenge 1 ---
+        // Declare a string called playerClass set to "Warrior" and log it.
+        // sting playerClass = "Warrior";
+        // Debug.Log("Class: " + playerClass);
+
+
+        // --- Challenge 2 ---
+        // Declare a float called stamina set to 14.5 and log it.
+        // float stamina = 14.5;
+        // Debug.Log("Stamina: " + stamina);
+
+
+        // --- Challenge 3 ---
+        // Declare an int called lives set to 3 and log it.
+        // Note: the error message may point to a different line than you expect.
+        // int lives = 3
+        // Debug.Log("Lives: " + lives);
+
+
+        // --- Challenge 4 ---
+        // Declare a bool called isReady set to false and log it.
+        // Bool isReady = false;
+        // Debug.Log("Ready: " + isReady);
+
+
+        // --- Challenge 5 ---
+        // Log the message "Checkpoint 2 reached" to the Console.
+        // int checkpoint = 2;
+        // Debug.log("Checkpoint " + checkpoint + " reached");
+
+
+        // --- Challenge 6 ---
+        // Declare a string called motto and log it.
+        // string motto = 'never quit';
+        // Debug.Log("Motto: " + motto);
+
+
+        // --- Challenge 7 ---
+        // Declare an int called coins set to 50.
+        // If coins equals 50, log "Exact change."
+        // int coins = 50;
+        // if (coins = 50)
+        // {
+        //     Debug.Log("Exact change.");
+        // }
+
+
+        // --- Challenge 8 ---
+        // Declare an int called mana set to 75 and log it, then log spellCount.
+        // The variables are both there — something is in the wrong order.
+        // int spellCount = 3;
+        // Debug.Log("Mana: " + mana);
+        // int mana = 75;
+        // Debug.Log("Spells: " + spellCount);
+
+
+        // --- Challenge 9 (logic error) ---
+        // regenRate is 5. Expected output: "Slow regen"
+        // The code compiles and runs but logs the wrong thing. Fix the condition.
+        // int regenRate = 5;
+        // if (regenRate < 8)
+        // {
+        //     Debug.Log("Fast regen");
+        // }
+        // else
+        // {
+        //     Debug.Log("Slow regen");
+        // }
+
+
+        // --- Challenge 10 (logic error) ---
+        // shields = 2, hpRemaining = 0.
+        // Rule: Safe only when BOTH shields AND health are above zero.
+        // Expected output: "Danger" (health is zero so the condition should fail)
+        // The code compiles and runs but logs the wrong thing. Fix the operator.
+        // int shields = 2;
+        // int hpRemaining = 0;
+        // if (shields > 0 || hpRemaining > 0)
+        // {
+        //     Debug.Log("Safe");
+        // }
+        // else
+        // {
+        //     Debug.Log("Danger");
+        // }
     }
 }
