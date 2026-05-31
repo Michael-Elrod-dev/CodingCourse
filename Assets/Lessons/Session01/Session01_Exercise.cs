@@ -16,7 +16,7 @@ public class Session01_Exercise : MonoBehaviour
         //   - a string called characterName
         //   - an int    called level          (1–10)
         //   - an int    called health         (50–150)
-        //   - a float   called critChance     (try 0.25f)
+        //   - a float   called critChance     (try 0.25)
         //   - a bool    called isPlayerOne
         // =====================================================================
 
@@ -54,11 +54,22 @@ public class Session01_Exercise : MonoBehaviour
 
         // =====================================================================
         // PART 5 — Health status (if / else if / else)
-        // Write a chain that logs a status message based on health:
-        //   health <= 0        → "Status: Dead"
-        //   health < 30        → "Status: Critical"
-        //   health < 60        → "Status: Hurt"
-        //   anything else      → "Status: Healthy"
+        // Write a chain of if / else if / else that logs ONE status message
+        // based on the current value of health.
+        //
+        // The rules:
+        //   health is 0 or less   → "Status: Dead"
+        //   health is under 30    → "Status: Critical"
+        //   health is under 60    → "Status: Hurt"
+        //   anything else         → "Status: Healthy"
+        //
+        // IMPORTANT — order matters. C# checks your conditions top to bottom
+        // and runs the FIRST one that is true, then skips the rest. So write
+        // the conditions from most specific (lowest health) to least specific.
+        // Start with "0 or less", then "under 30", then "under 60", then else.
+        //
+        // (If you wrote "under 60" first, it would also catch health of 5 or
+        //  20 — and you'd never reach the Critical or Dead branches.)
         // =====================================================================
 
         // TODO
@@ -81,7 +92,7 @@ public class Session01_Exercise : MonoBehaviour
         // 10 broken code snippets. Work through them one at a time:
         //   1. Uncomment the block (remove the // from every line in that challenge)
         //   2. Save — read what the Console or compiler tells you
-        //   3. Fix the code (edit it — do NOT just re-comment it)
+        //   3. Fix the code
         //   4. Press Play to confirm correct output
         //   5. Leave the fixed code in place and move to the next challenge
         //
@@ -90,7 +101,6 @@ public class Session01_Exercise : MonoBehaviour
         // is stated in the comment. You have to reason through why the logic is
         // wrong, not just read a red error message.
         //
-        // Work independently. You have everything you need from this session.
         // =====================================================================
 
 
