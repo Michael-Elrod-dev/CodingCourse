@@ -290,12 +290,13 @@ public class Session02_Exercise : MonoBehaviour
 
         // --- Challenge 9 (logic error) ---
         // Sum the array. Expected output: "Sum: 60"
-        // It compiles and runs but logs the wrong number. Find the bug.
+        // It compiles and runs but logs the wrong number (it logs 50).
+        // The loop skips something. Find the bug.
         // int[] hits = { 10, 20, 30 };
         // int sum = 0;
-        // for (int i = 0; i < hits.Length; i++)
+        // for (int i = 1; i < hits.Length; i++)
         // {
-        //     int sum = sum + hits[i];
+        //     sum = sum + hits[i];
         // }
         // Debug.Log("Sum: " + sum);
 
