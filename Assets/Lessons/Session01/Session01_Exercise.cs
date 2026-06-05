@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using UnityEngine;
 
 // Session 1 Exercise — Variables, Types & Conditionals
@@ -16,11 +17,16 @@ public class Session01_Exercise : MonoBehaviour
         //   - a string called characterName
         //   - an int    called level          (1–10)
         //   - an int    called health         (50–150)
-        //   - a float   called critChance     (try 0.25)
+        //   - a float   called critChance     (try 0.25f)
         //   - a bool    called isPlayerOne
         // =====================================================================
 
-        // TODO
+        // Player
+        int level = 0;
+        int health = 100;
+        float critChance = 0.25f;
+        bool isPlayerOne = true;
+
 
 
         // =====================================================================
@@ -30,8 +36,7 @@ public class Session01_Exercise : MonoBehaviour
         // Example format: "Alex | Level: 3 | Health: 100"
         // =====================================================================
 
-        // TODO
-
+        
 
         // =====================================================================
         // PART 3 — Arithmetic
@@ -41,7 +46,23 @@ public class Session01_Exercise : MonoBehaviour
         //   3. Crit chance improves by 0.10f (add to critChance)
         // =====================================================================
 
-        // TODO
+        int level;
+        level = 1;
+        level = level + 1;
+        level += 1;
+        level++;
+        level--;
+        // level = 3
+        int level;
+
+
+
+
+
+        int health = 100;
+        float critChance = 0.25f;
+        bool isPlayerOne = true;
+
 
 
         // =====================================================================
@@ -72,7 +93,20 @@ public class Session01_Exercise : MonoBehaviour
         //  20 — and you'd never reach the Critical or Dead branches.)
         // =====================================================================
 
-        // TODO
+        health = 0;
+        
+        if (isPlayerOne == isShot)
+        {
+            isPlayerOne.takeDamage(20);
+        }
+        if (health <= 0)
+        {
+            Debug.Log("Status: Dead");
+        }
+        else
+        {
+            Debug.Log("Status: Critical");
+        }
 
 
         // =====================================================================
