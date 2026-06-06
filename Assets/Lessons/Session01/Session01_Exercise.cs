@@ -1,4 +1,3 @@
-using System.ComponentModel.Design;
 using UnityEngine;
 
 // Session 1 Exercise — Variables, Types & Conditionals
@@ -21,13 +20,11 @@ public class Session01_Exercise : MonoBehaviour
         //   - a bool    called isPlayerOne
         // =====================================================================
 
-        // Player
-        int level = 0;
+        string characterName = "Michael";
+        int level = 4;
         int health = 100;
         float critChance = 0.25f;
         bool isPlayerOne = true;
-
-
 
         // =====================================================================
         // PART 2 — Log your starting state
@@ -36,7 +33,9 @@ public class Session01_Exercise : MonoBehaviour
         // Example format: "Alex | Level: 3 | Health: 100"
         // =====================================================================
 
-        
+        Debug.Log("=== Starting State ===");
+        Debug.Log(characterName + " | Level: " + level + " | Health: " + health);
+        Debug.Log("Crit: " + critChance + " | Player One: " + isPlayerOne);
 
         // =====================================================================
         // PART 3 — Arithmetic
@@ -46,32 +45,17 @@ public class Session01_Exercise : MonoBehaviour
         //   3. Crit chance improves by 0.10f (add to critChance)
         // =====================================================================
 
-        int level;
-        level = 1;
+        health = health - 45;
         level = level + 1;
-        level += 1;
-        level++;
-        level--;
-        // level = 3
-        int level;
-
-
-
-
-
-        int health = 100;
-        float critChance = 0.25f;
-        bool isPlayerOne = true;
-
-
+        critChance = critChance + 0.10f;
 
         // =====================================================================
         // PART 4 — Log the updated state
         // Print health, level, and critChance again so you can see the changes.
         // =====================================================================
 
-        // TODO
-
+        Debug.Log("=== After Updates ===");
+        Debug.Log("Health: " + health + " | Level: " + level + " | Crit: " + critChance);
 
         // =====================================================================
         // PART 5 — Health status (if / else if / else)
@@ -93,42 +77,49 @@ public class Session01_Exercise : MonoBehaviour
         //  20 — and you'd never reach the Critical or Dead branches.)
         // =====================================================================
 
-        health = 0;
-        
-        if (isPlayerOne == isShot)
-        {
-            isPlayerOne.takeDamage(20);
-        }
-        if (health <= 0)
+        // Here, "health" is an integer data type.
+        // So, we have to cast it to a float in order to get a decimal value from division
+        // For example, in C#:
+        //     75 / 100 = 0
+        //     75.0f / 100.0 = 0.75f
+        float healthPercentage = (float)health / 150.0f * 100.0f;
+
+        if (healthPercentage <= 0)
         {
             Debug.Log("Status: Dead");
         }
-        else
+        else if (healthPercentage < 30)
         {
             Debug.Log("Status: Critical");
         }
-
+        else if (healthPercentage < 60)
+        {
+            Debug.Log("Status: Hurt");
+        }
+        else
+        {
+            Debug.Log("Status: Healthy");
+        }
 
         // =====================================================================
         // PART 6 — Combined condition
-        // Declare a bool called hasRevive and set it to false.
-        // Write ONE if statement that checks: is health <= 0 AND no revive?
+        // Declare a bool (boolean) called hasRevive and set it to false.
+        // Write ONE if statement that checks: is health zero or less and there is no revive
         // If true, log "Game over."
         // If false, log "Still fighting."
         // =====================================================================
 
         // TODO
 
-
         // =====================================================================
         // PART 7 — Error Gauntlet
         //
         // 10 broken code snippets. Work through them one at a time:
         //   1. Uncomment the block (remove the // from every line in that challenge)
-        //   2. Save — read what the Console or compiler tells you
+        //   2. Save, run the game in Unity, read what the Console tells you
         //   3. Fix the code
-        //   4. Press Play to confirm correct output
-        //   5. Leave the fixed code in place and move to the next challenge
+        //   4. Run the game again to confirm correct output
+        //   5. Leave the code in place and move to the next challenge
         //
         // Challenges 1–8 are compile errors — Unity won't run at all until fixed.
         // Challenges 9–10 compile fine but produce WRONG output. Expected output
@@ -140,7 +131,7 @@ public class Session01_Exercise : MonoBehaviour
 
         // --- Challenge 1 ---
         // Declare a string called playerClass set to "Warrior" and log it.
-        // sting playerClass = "Warrior";
+        // string playerClass = "Warrior";
         // Debug.Log("Class: " + playerClass);
 
 
@@ -187,7 +178,6 @@ public class Session01_Exercise : MonoBehaviour
 
         // --- Challenge 8 ---
         // Declare an int called mana set to 75 and log it, then log spellCount.
-        // The variables are both there — something is in the wrong order.
         // int spellCount = 3;
         // Debug.Log("Mana: " + mana);
         // int mana = 75;
@@ -196,7 +186,6 @@ public class Session01_Exercise : MonoBehaviour
 
         // --- Challenge 9 (logic error) ---
         // regenRate is 5. Expected output: "Slow regen"
-        // The code compiles and runs but logs the wrong thing. Fix the condition.
         // int regenRate = 5;
         // if (regenRate < 8)
         // {
@@ -210,9 +199,8 @@ public class Session01_Exercise : MonoBehaviour
 
         // --- Challenge 10 (logic error) ---
         // shields = 2, hpRemaining = 0.
-        // Rule: Safe only when BOTH shields AND health are above zero.
+        // Rule: Safe only when shields and health are above zero.
         // Expected output: "Danger" (health is zero so the condition should fail)
-        // The code compiles and runs but logs the wrong thing. Fix the operator.
         // int shields = 2;
         // int hpRemaining = 0;
         // if (shields > 0 || hpRemaining > 0)
