@@ -23,7 +23,18 @@ public class Session02_Exercise : MonoBehaviour
         // in combat, log "Heal up!" — otherwise log "Hold position."
         // =====================================================================
 
-        // TODO
+        int potions = 2;
+        bool inCombat = true;
+
+        if (potions >= 1 && inCombat)
+        {
+            Debug.Log("Heal up!");
+        }
+        else
+        {
+            Debug.Log("Hold position.");
+        }
+        // Output: Heal up!
 
 
         // =====================================================================
@@ -52,7 +63,19 @@ public class Session02_Exercise : MonoBehaviour
         // and test i <= 5. Either works — pick one and understand why.
         // =====================================================================
 
-        // TODO
+        for (int i = 0; i < 5; i++)
+        {
+            Debug.Log("Wave " + (i + 1));
+        }
+        // Output:
+        //   Wave 1
+        //   Wave 2
+        //   Wave 3
+        //   Wave 4
+        //   Wave 5
+        //
+        // Alternate valid form — start at 1, test <= 5:
+        //   for (int i = 1; i <= 5; i++) { Debug.Log("Wave " + i); }
 
 
         // =====================================================================
@@ -69,7 +92,13 @@ public class Session02_Exercise : MonoBehaviour
         // inside, it resets to 0 every pass and you'd never accumulate.
         // =====================================================================
 
-        // TODO
+        int totalDamage = 0;            // declared OUTSIDE the loop
+        for (int i = 0; i < 6; i++)
+        {
+            totalDamage = totalDamage + 10;   // or: totalDamage += 10;
+        }
+        Debug.Log("Total damage: " + totalDamage);
+        // Output: Total damage: 60
 
 
         // =====================================================================
@@ -78,9 +107,10 @@ public class Session02_Exercise : MonoBehaviour
         // same type, in order. You access each by its index (position),
         // and indexes start at 0.
         //
-        //   int[] scores = { 10, 20, 30 };
-        //   scores[0] is 10,  scores[1] is 20,  scores[2] is 30
-        //   scores.Length is 3 (the number of items)
+        // int score = 50;
+        // int[] scores = { 10, 20, 30 };
+        // scores[0] is 10,  scores[1] is 20,  scores[2] is 30
+        // scores.Length is 3 (the number of items)
         //
         // Declare an int array called enemyHealth with these five values:
         //   30, 50, 20, 80, 45
@@ -94,7 +124,12 @@ public class Session02_Exercise : MonoBehaviour
         //   Enemy count: 5
         // =====================================================================
 
-        // TODO
+        int[] enemyHealth = { 30, 50, 20, 80, 45 };
+        Debug.Log("First enemy health: " + enemyHealth[0]);
+        Debug.Log("Enemy count: " + enemyHealth.Length);
+        // Output:
+        //   First enemy health: 30
+        //   Enemy count: 5
 
 
         // =====================================================================
@@ -120,7 +155,16 @@ public class Session02_Exercise : MonoBehaviour
         // index 5, which doesn't exist — an out-of-range error.
         // =====================================================================
 
-        // TODO
+        for (int i = 0; i < enemyHealth.Length; i++)
+        {
+            Debug.Log("Enemy " + i + " has " + enemyHealth[i] + " HP");
+        }
+        // Output:
+        //   Enemy 0 has 30 HP
+        //   Enemy 1 has 50 HP
+        //   Enemy 2 has 20 HP
+        //   Enemy 3 has 80 HP
+        //   Enemy 4 has 45 HP
 
 
         // =====================================================================
@@ -139,8 +183,22 @@ public class Session02_Exercise : MonoBehaviour
         //   Total HP: 225
         //   Toughest enemy HP: 80
         // =====================================================================
-
-        // TODO
+        
+        int totalHP = 0;
+        int highest = 0;
+        for (int i = 0; i < enemyHealth.Length; i++)
+        {
+            totalHP = totalHP + enemyHealth[i];
+            if (enemyHealth[i] > highest)
+            {
+                highest = enemyHealth[i];
+            }
+        }
+        Debug.Log("Total HP: " + totalHP);
+        Debug.Log("Toughest enemy HP: " + highest);
+        // Output:
+        //   Total HP: 225
+        //   Toughest enemy HP: 80
 
 
         // =====================================================================
@@ -161,7 +219,21 @@ public class Session02_Exercise : MonoBehaviour
         //   Wounded enemies: 3
         // =====================================================================
 
-        // TODO
+        int woundedCount = 0;
+        for (int i = 0; i < enemyHealth.Length; i++)
+        {
+            if (enemyHealth[i] < 50)
+            {
+                Debug.Log("Enemy " + i + " is wounded");
+                woundedCount = woundedCount + 1;
+            }
+        }
+        Debug.Log("Wounded enemies: " + woundedCount);
+        // Output:
+        //   Enemy 0 is wounded
+        //   Enemy 2 is wounded
+        //   Enemy 4 is wounded
+        //   Wounded enemies: 3
 
 
         // =====================================================================
@@ -193,7 +265,19 @@ public class Session02_Exercise : MonoBehaviour
         //   Out of fuel.
         // =====================================================================
 
-        // TODO
+        int fuel = 10;
+        while (fuel > 0)
+        {
+            Debug.Log("Fuel remaining: " + fuel);
+            fuel = fuel - 3;            // or: fuel -= 3;
+        }
+        Debug.Log("Out of fuel.");
+        // Output:
+        //   Fuel remaining: 10
+        //   Fuel remaining: 7
+        //   Fuel remaining: 4
+        //   Fuel remaining: 1
+        //   Out of fuel.
 
 
         // =====================================================================
@@ -217,88 +301,103 @@ public class Session02_Exercise : MonoBehaviour
         // --- Challenge 1 ---
         // Log the numbers 0, 1, 2 using a for loop.
         // The semicolons inside the for are wrong.
-        // for (int i = 0, i < 3, i++)
-        // {
-        //     Debug.Log(i);
-        // }
+        for (int i = 0; i < 3; i++)
+        {
+            Debug.Log(i);
+        }
+        // Output: 0, 1, 2
 
 
         // --- Challenge 2 ---
         // Log "Tick" three times with a for loop.
         // Something is missing from the loop header.
-        // for (int i = 0; i < 3)
-        // {
-        //     Debug.Log("Tick");
-        // }
+        for (int i = 0; i < 3; i++)
+        {
+            Debug.Log("Tick");
+        }
+        // Output: Tick, Tick, Tick
+        // (Original would not compile — three clauses are required.)
 
 
         // --- Challenge 3 ---
         // Declare an array of three ints and log the first one.
         // The array syntax is wrong.
-        // int ammo = { 12, 6, 30 };
-        // Debug.Log(ammo[0]);
+        int[] ammo = { 12, 6, 30 };
+        Debug.Log(ammo[0]);
+        // Output: 12
 
 
         // --- Challenge 4 ---
         // Declare an array and log how many items it has.
         // The way the count is being read is wrong.
-        // int[] lives = { 3, 2, 1 };
-        // Debug.Log("Count: " + lives.Length());
+        int[] lives = { 3, 2, 1 };
+        Debug.Log("Count: " + lives.Length);
+        // Output: Count: 3
 
 
         // --- Challenge 5 ---
         // Loop through an array and log each value.
         // The loop body refers to the wrong thing.
-        // int[] gold = { 100, 250, 75 };
-        // for (int i = 0; i < gold.Length; i++)
-        // {
-        //     Debug.Log(gold);
-        // }
+        int[] gold = { 100, 250, 75 };
+        for (int i = 0; i < gold.Length; i++)
+        {
+            Debug.Log(gold[i]);
+        }
+        // Output: 100, 250, 75
 
 
         // --- Challenge 6 ---
         // A while loop that logs countdown 3, 2, 1.
         // One symbol is missing that the loop needs to work.
-        // int count = 3;
-        // while (count > 0)
-        // {
-        //     Debug.Log(count);
-        //     count--
-        // }
+        int count = 3;
+        while (count > 0)
+        {
+            Debug.Log(count);
+            count--;
+        }
+        // Output: 3, 2, 1
 
 
         // --- Challenge 7 ---
         // Log each item of the array. The counter is declared with the
         // wrong type for indexing.
-        // string[] names = { "Ana", "Bo", "Cy" };
-        // for (float i = 0; i < names.Length; i++)
-        // {
-        //     Debug.Log(names[i]);
-        // }
+        string[] names = { "Ana", "Bo", "Cy" };
+        for (int i = 0; i < names.Length; i++)
+        {
+            Debug.Log(names[i]);
+        }
+        // Output: Ana, Bo, Cy
 
 
         // --- Challenge 8 (logic / runtime error) ---
         // Log every value in the array.
         // This compiles, but pressing Play throws an IndexOutOfRangeException.
         // Expected: logs 5, 10, 15 with no error. Fix the loop test.
-        // int[] mana = { 5, 10, 15 };
-        // for (int i = 0; i <= mana.Length; i++)
-        // {
-        //     Debug.Log(mana[i]);
-        // }
+        int[] mana = { 5, 10, 15 };
+        for (int i = 0; i < mana.Length; i++)
+        {
+            Debug.Log(mana[i]);
+        }
+        // Output: 5, 10, 15
+        // (Original used i <= mana.Length, which tries to read index 3 →
+        //  IndexOutOfRangeException. Last valid index is Length - 1 = 2.)
 
 
         // --- Challenge 9 (logic error) ---
         // Sum the array. Expected output: "Sum: 60"
         // It compiles and runs but logs the wrong number (it logs 50).
         // The loop skips something. Find the bug.
-        // int[] hits = { 10, 20, 30 };
-        // int sum = 0;
-        // for (int i = 1; i < hits.Length; i++)
-        // {
-        //     sum = sum + hits[i];
-        // }
-        // Debug.Log("Sum: " + sum);
+        int[] hits = { 10, 20, 30 };
+        int sum = 0;
+        for (int i = 0; i < hits.Length; i++)
+        {
+            sum = sum + hits[i];
+        }
+        Debug.Log("Sum: " + sum);
+        // Output: Sum: 60
+        // (Original started at i = 1, so it summed only 20 + 30 = 50 and
+        //  never added index 0. Remember: array indexes start at 0, so a loop
+        //  that should touch every element must start there too.)
 
 
         // --- Challenge 10 (logic error — INFINITE LOOP, read before running) ---
@@ -311,10 +410,13 @@ public class Session02_Exercise : MonoBehaviour
         //
         // (If you do freeze Unity: the loop will eventually be force-killed,
         //  or you can avoid it entirely by fixing the code before running.)
-        // int gas = 5;
-        // while (gas > 0)
-        // {
-        //     Debug.Log(gas);
-        // }
+        int gas = 5;
+        while (gas > 0)
+        {
+            Debug.Log(gas);
+            gas--;
+        }
+        // Output: 5, 4, 3, 2, 1
+        // (Original never changed gas, so gas > 0 stayed true forever.)
     }
 }

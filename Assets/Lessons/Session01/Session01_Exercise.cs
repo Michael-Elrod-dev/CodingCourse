@@ -109,7 +109,16 @@ public class Session01_Exercise : MonoBehaviour
         // If false, log "Still fighting."
         // =====================================================================
 
-        // TODO
+        bool hasRevive = false;
+        if (!(health == 1))
+        {
+            
+        }
+        if (health <= 0 && !hasRevive)
+        {
+            Debug.Log("")
+        }
+
 
         // =====================================================================
         // PART 7 — Error Gauntlet
@@ -131,14 +140,14 @@ public class Session01_Exercise : MonoBehaviour
 
         // --- Challenge 1 ---
         // Declare a string called playerClass set to "Warrior" and log it.
-        // string playerClass = "Warrior";
-        // Debug.Log("Class: " + playerClass);
+        string playerClass = "Warrior";
+        Debug.Log("Class: " + playerClass);
 
 
         // --- Challenge 2 ---
         // Declare a float called stamina set to 14.5 and log it.
-        // float stamina = 14.5;
-        // Debug.Log("Stamina: " + stamina);
+        float stamina = 14.5;
+        Debug.Log("Stamina: " + stamina);
 
 
         // --- Challenge 3 ---
@@ -169,11 +178,11 @@ public class Session01_Exercise : MonoBehaviour
         // --- Challenge 7 ---
         // Declare an int called coins set to 50.
         // If coins equals 50, log "Exact change."
-        // int coins = 50;
-        // if (coins = 50)
-        // {
-        //     Debug.Log("Exact change.");
-        // }
+        int coins = 50;
+        if (coins = 50)
+        {
+            Debug.Log("Exact change.");
+        }
 
 
         // --- Challenge 8 ---

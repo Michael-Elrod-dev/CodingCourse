@@ -243,7 +243,7 @@ Rigidbody rb = GetComponent<Rigidbody>();
 
 ---
 
-## 14. Loops — Session 2
+## 14. Loops & Arrays — Session 2
 
 ```csharp
 // for — when you know how many times
@@ -265,6 +265,26 @@ foreach (string item in inventory)
 }
 ```
 
+### Arrays
+
+One variable holding multiple values of the same type, in order.
+
+```csharp
+int[] scores = { 10, 20, 30 };
+
+scores[0]        // first item — indexes start at 0
+scores[2]        // last item — always Length - 1
+scores.Length    // item count (no parentheses — it's not a method)
+
+// The standard "walk the whole array" loop:
+for (int i = 0; i < scores.Length; i++)
+{
+    Debug.Log(scores[i]);
+}
+```
+
+> **Off-by-one gotcha:** the test is `i < scores.Length`, never `<=`. A 3-item array has indexes 0, 1, 2 — reading index 3 throws an IndexOutOfRangeException.
+
 ---
 
 ## 15. Methods — Session 3
@@ -285,3 +305,7 @@ void PrintScore()
     Debug.Log("Score: " + score);
 }
 ```
+
+> **Where methods live:** definitions go at *class level* — inside the class braces but **outside** `Start`. Calls go wherever you want the code to run (usually inside `Start`).
+
+> **Returning isn't saving:** `Heal(hp, 25);` alone changes nothing — the answer comes back to the caller and vanishes if unused. Store it: `hp = Heal(hp, 25);`.
