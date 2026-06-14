@@ -45,7 +45,7 @@ public class Homework01_Review : MonoBehaviour
         // Debug.Log("A1: " + score);
 
         // My prediction:
-        // 30
+        //
 
 
         // --- A2 — if / else if order ------------------------------------------
@@ -65,12 +65,11 @@ public class Homework01_Review : MonoBehaviour
         // }
 
         // My prediction:
-        // A2: Hurt
+        //
 
 
         // --- A3 — combined conditions -----------------------------------------
 
-        // SHOW BINARY EXPLANATION!!!!!!!! 0 -> 1
         // bool isNight = true;
         // bool hasTorch = false;
         // if (isNight && !hasTorch)
@@ -83,7 +82,7 @@ public class Homework01_Review : MonoBehaviour
         // }
 
         // My prediction:
-        // A3: Too dark to travel.
+        //
 
 
         // --- A4 — loop with a running total ------------------------------------
@@ -96,7 +95,7 @@ public class Homework01_Review : MonoBehaviour
         // Debug.Log("A4: " + chest);
 
         // My prediction:
-        // A4: 6
+        //
 
 
         // --- A5 — array + loop + condition -------------------------------------
@@ -113,7 +112,7 @@ public class Homework01_Review : MonoBehaviour
         // Debug.Log("A5: " + strongHits);
 
         // My prediction:
-        // A5: 2
+        //
 
 
         // --- A6 — while loop ----------------------------------------------------
@@ -128,9 +127,7 @@ public class Homework01_Review : MonoBehaviour
         // Debug.Log("A6: depleted");
 
         // My prediction:
-        // A6: charge 8
-        // A6: charge 4
-        // A6: depleted
+        //
 
 
         // =====================================================================
@@ -145,12 +142,7 @@ public class Homework01_Review : MonoBehaviour
         //
         // Example output:  B1: Aria | Level 3 | Shield: True
 
-        string heroName = "Aria";
-        int heroLevel = 3;
-        bool hasShield = true;
-        Debug.Log("B1: " + heroName + " | Level " + heroLevel + " | Shield: " + hasShield);
-        // Output: B1: Aria | Level 3 | Shield: True
-        // (Any values are fine — the structure is what counts.)
+        // TODO
 
 
         // --- B2 — sum an array (Session 2) ------------------------------------
@@ -161,14 +153,7 @@ public class Homework01_Review : MonoBehaviour
         //
         // Expected output:  B2 Total enemies: 22
 
-        int[] waveSizes = { 4, 7, 2, 9 };
-        int totalEnemies = 0;
-        for (int i = 0; i < waveSizes.Length; i++)
-        {
-            totalEnemies = totalEnemies + waveSizes[i];
-        }
-        Debug.Log("B2 Total enemies: " + totalEnemies);
-        // Output: B2 Total enemies: 22
+        // TODO
 
 
         // --- B3 — if / else if chain (Session 1) ------------------------------
@@ -180,20 +165,7 @@ public class Homework01_Review : MonoBehaviour
         //
         // Expected output:  B3: Comfortable
 
-        int gold = 75;
-        if (gold >= 100)
-        {
-            Debug.Log("B3: Rich");
-        }
-        else if (gold >= 50)
-        {
-            Debug.Log("B3: Comfortable");
-        }
-        else
-        {
-            Debug.Log("B3: Broke");
-        }
-        // Output: B3: Comfortable
+        // TODO
 
 
         // =====================================================================
@@ -205,22 +177,20 @@ public class Homework01_Review : MonoBehaviour
 
         // --- C1 — compile error -------------------------------------------------
         // Expected output:  C1: 0.3
-        float dropRate = 0.3f;
-        Debug.Log("C1: " + dropRate);
-        // Output: C1: 0.3
+        // float dropRate = 0.3;
+        // Debug.Log("C1: " + dropRate);
 
 
         // --- C2 — logic error -----------------------------------------------------
         // This compiles and runs, but the sum is wrong.
         // Expected output:  C2 Sum: 18  — but it logs 7. Find the bug.
-        int[] runes = { 5, 6, 7 };
-        int runeSum = 0;
-        for (int i = 0; i < runes.Length; i++)
-        {
-            runeSum = runeSum + runes[i];
-        }
-        Debug.Log("C2 Sum: " + runeSum);
-        // Output: C2 Sum: 18
+        // int[] runes = { 5, 6, 7 };
+        // int runeSum = 0;
+        // for (int i = 0; i < runes.Length; i++)
+        // {
+        //     runeSum = runes[i];
+        // }
+        // Debug.Log("C2 Sum: " + runeSum);
 
 
         // =====================================================================

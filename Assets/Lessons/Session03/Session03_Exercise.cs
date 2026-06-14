@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 // Session 3 Exercise — Methods
@@ -40,7 +42,18 @@ public class Session03_Exercise : MonoBehaviour
         //   Darkness falls.
         // =====================================================================
 
-        // TODO
+        int torches = 9;
+        while (torches > 0)
+        {
+            Debug.Log("Torches left: " + torches);
+            torches = torches - 3;      // or: torches -= 3;
+        }
+        Debug.Log("Darkness falls.");
+        // Output:
+        //   Torches left: 9
+        //   Torches left: 6
+        //   Torches left: 3
+        //   Darkness falls.
 
 
         // =====================================================================
@@ -76,7 +89,14 @@ public class Session03_Exercise : MonoBehaviour
         //   For glory!
         // =====================================================================
 
-        // TODO (calls go here, method goes below)
+        PrintBattleCry();
+        PrintBattleCry();
+        PrintBattleCry();
+        // Output:
+        //   For glory!
+        //   For glory!
+        //   For glory!
+        // (The method is defined ONCE below Start — three calls, three runs.)
 
 
         // =====================================================================
@@ -106,7 +126,16 @@ public class Session03_Exercise : MonoBehaviour
         //
         // =====================================================================
 
-        // TODO
+        AnnounceWave(1);
+        AnnounceWave(2);
+        AnnounceWave(3);
+        // Output:
+        //   Wave 1 incoming!
+        //   Wave 2 incoming!
+        //   Wave 3 incoming!
+        //
+        // Bonus form — same output:
+        //   for (int i = 1; i <= 3; i++) { AnnounceWave(i); }
 
 
         // =====================================================================
@@ -128,7 +157,11 @@ public class Session03_Exercise : MonoBehaviour
         //   Dragon deals 25 damage!
         // =====================================================================
 
-        // TODO
+        LogAttack("Goblin", 7);
+        LogAttack("Dragon", 25);
+        // Output:
+        //   Goblin deals 7 damage!
+        //   Dragon deals 25 damage!
 
 
         // =====================================================================
@@ -140,7 +173,7 @@ public class Session03_Exercise : MonoBehaviour
         //   {
         //       return a + b;    // return = "return this and exit NOW"
         //   }
-        //
+        
         //   int result = Add(3, 5);    // the call BECOMES the value 8 how cool!
         //
         // KEY IDEA: returning is not printing, and it is not saving. The
@@ -161,7 +194,19 @@ public class Session03_Exercise : MonoBehaviour
         //   Health after hit: 45
         // =====================================================================
 
-        // TODO
+        int playerHealth = 100;
+        playerHealth = ApplyDamage(playerHealth, 35);
+        Debug.Log("Health after hit: " + playerHealth);
+        playerHealth = ApplyDamage(playerHealth, 20);
+        Debug.Log("Health after hit: " + playerHealth);
+        // Output:
+        //   Health after hit: 65
+        //   Health after hit: 45
+        //
+        // The crucial bit is  playerHealth = ApplyDamage(...)  — the method
+        // returns the new value, and the caller must STORE it. Calling
+        // ApplyDamage(playerHealth, 35); alone would change nothing
+        // (that exact mistake is Gauntlet Challenge 7).
 
 
         // =====================================================================
@@ -192,7 +237,28 @@ public class Session03_Exercise : MonoBehaviour
         //   CRITICAL - find a potion!
         // =====================================================================
 
-        // TODO
+        if (IsCritical(playerHealth))
+        {
+            Debug.Log("CRITICAL - find a potion!");
+        }
+        else
+        {
+            Debug.Log("Stable.");
+        }
+
+        playerHealth = ApplyDamage(playerHealth, 30);   // 45 → 15
+
+        if (IsCritical(playerHealth))
+        {
+            Debug.Log("CRITICAL - find a potion!");
+        }
+        else
+        {
+            Debug.Log("Stable.");
+        }
+        // Output:
+        //   Stable.
+        //   CRITICAL - find a potion!
 
 
         // =====================================================================
@@ -222,7 +288,13 @@ public class Session03_Exercise : MonoBehaviour
         // works for any array you ever hand it.
         // =====================================================================
 
-        // TODO
+        int[] caveEnemies = { 30, 50, 20 };
+        int[] bossRoom = { 80, 45 };
+        Debug.Log("Cave total: " + TotalHealth(caveEnemies));
+        Debug.Log("Boss room total: " + TotalHealth(bossRoom));
+        // Output:
+        //   Cave total: 100
+        //   Boss room total: 125
 
 
         // =====================================================================
@@ -255,7 +327,8 @@ public class Session03_Exercise : MonoBehaviour
         // Sound the alarm. Uncomment the method SoundAlarm at the bottom of
         // the file too.
         // Expected output: ALARM! Enemies incoming!
-        // SoundAlarm;
+        SoundAlarm();
+        // Output: ALARM! Enemies incoming!
 
 
         // --- Challenge 2 ---
@@ -263,65 +336,78 @@ public class Session03_Exercise : MonoBehaviour
         // Expected output:
         //   Taunt!
         //   Taunt!
-        // RepeatTaunt();
+        RepeatTaunt(2);
+        // Output: Taunt!, Taunt!
+        // (Original call had no argument: "no overload for method
+        //  'RepeatTaunt' takes 0 arguments".)
 
 
         // --- Challenge 3 ---
         // Award 50 gold.
         // Expected output: Gold gained: 50
-        // GrantGold("fifty");
+        GrantGold(50);
+        // Output: Gold gained: 50
+        // (Strings and ints are not interchangeable — same lesson as
+        //  Session 1, now at a method boundary.)
 
 
         // --- Challenge 4 ---
         // Double a damage number.
         // Expected output: Double damage: 12
-        // Debug.Log("Double damage: " + DoubleDamage(6));
+        Debug.Log("Double damage: " + DoubleDamage(6));
+        // Output: Double damage: 12
 
 
         // --- Challenge 5 ---
         // Celebrate the win.
         // Expected output: Victory!
-        // string message = LogVictory();
+        LogVictory();
+        // Output: Victory!
 
 
         // --- Challenge 6 ---
         // Multiply two numbers.
         // Expected output: Product: 20
-        // Debug.Log("Product: " + Multiply(4, 5));
+        Debug.Log("Product: " + Multiply(4, 5));
+        // Output: Product: 20
 
 
         // --- Challenge 7 (logic error) ---
         // Drink a potion.
         // Expected output: HP after potion: 65 — but it logs 40. Why?
-        // int hp = 40;
-        // Heal(hp, 25);
-        // Debug.Log("HP after potion: " + hp);
+        int hp = 40;
+        hp = Heal(hp, 25);
+        Debug.Log("HP after potion: " + hp);
+        // Output: HP after potion: 65
 
 
         // --- Challenge 8 (logic error) ---
         // Total up the loot.
         // Expected output: Loot total: 60 — but it logs 10. Find the bug.
-        // int[] loot = { 10, 20, 30 };
-        // Debug.Log("Loot total: " + SumAll(loot));
+        int[] loot = { 10, 20, 30 };
+        Debug.Log("Loot total: " + SumAll(loot));
+        // Output: Loot total: 60
 
 
         // --- Challenge 9 (logic error) ---
         // 30 bullets, 12 fired.
         // Expected output: Ammo left: 18 — but it logs -18. Find the bug.
-        // Debug.Log("Ammo left: " + AmmoLeft(30, 12));
+        Debug.Log("Ammo left: " + AmmoLeft(30, 12));
+        // Output: Ammo left: 18
 
 
         // --- Challenge 10 (logic error) ---
         // You have 40 gold; the sword costs 100.
         // Expected output: Not enough gold. — but it logs Purchased!
-        // if (CanAfford(40, 100))
-        // {
-        //     Debug.Log("Purchased!");
-        // }
-        // else
-        // {
-        //     Debug.Log("Not enough gold.");
-        // }
+        if (CanAfford(40, 100))
+        {
+            Debug.Log("Purchased!");
+        }
+        else
+        {
+            Debug.Log("Not enough gold.");
+        }
+        // Output: Not enough gold.
     }
 
     // =========================================================================
@@ -331,96 +417,118 @@ public class Session03_Exercise : MonoBehaviour
     // C# finds methods by name, not by position in the file.
     // =========================================================================
 
-    // TODO — Part 1: PrintBattleCry
+    // Part 1
+    void PrintBattleCry()
+    {
+        Debug.Log("For glory!");
+    }
 
+    // Part 2
+    void AnnounceWave(int waveNumber)
+    {
+        Debug.Log("Wave " + waveNumber + " incoming!");
+    }
 
-    // TODO — Part 2: AnnounceWave
+    // Part 3
+    void LogAttack(string attacker, int damage)
+    {
+        Debug.Log(attacker + " deals " + damage + " damage!");
+    }
 
+    // Part 4
+    int ApplyDamage(int health, int damage)
+    {
+        return health - damage;
+    }
 
-    // TODO — Part 3: LogAttack
+    // Part 5
+    bool IsCritical(int health)
+    {
+        return health < 30;
+    }
 
-
-    // TODO — Part 4: ApplyDamage
-
-
-    // TODO — Part 5: IsCritical
-
-
-    // TODO — Part 6: TotalHealth
-
+    // Part 6
+    int TotalHealth(int[] enemies)
+    {
+        int total = 0;
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            total = total + enemies[i];
+        }
+        return total;
+    }
 
     // =========================================================================
-    // GAUNTLET METHODS — used by Part 7 only. Don't touch until you get there.
-    // ALL commented out. Uncomment each one when its challenge tells you to —
-    // never early, or you may break compiling for the parts you're still on.
+    // GAUNTLET METHODS (fixed where they were broken)
     // =========================================================================
 
-    // --- Challenge 1 uses this ---
-    // void SoundAlarm()
-    // {
-    //     Debug.Log("ALARM! Enemies incoming!");
-    // }
+    // Challenge 1 (was correct)
+    void SoundAlarm()
+    {
+        Debug.Log("ALARM! Enemies incoming!");
+    }
 
-    // --- Challenge 2 uses this ---
-    // void RepeatTaunt(int times)
-    // {
-    //     for (int i = 0; i < times; i++)
-    //     {
-    //         Debug.Log("Taunt!");
-    //     }
-    // }
+    // Challenge 2 (was correct)
+    void RepeatTaunt(int times)
+    {
+        for (int i = 0; i < times; i++)
+        {
+            Debug.Log("Taunt!");
+        }
+    }
 
-    // --- Challenge 3 uses this ---
-    // void GrantGold(int amount)
-    // {
-    //     Debug.Log("Gold gained: " + amount);
-    // }
+    // Challenge 3 (was correct)
+    void GrantGold(int amount)
+    {
+        Debug.Log("Gold gained: " + amount);
+    }
 
-    // --- Challenge 4 uses this ---
-    // int DoubleDamage(int damage)
-    // {
-    //     int doubled = damage * 2;
-    // }
+    // Challenge 4 — FIX: added the missing return statement
+    int DoubleDamage(int damage)
+    {
+        int doubled = damage * 2;
+        return doubled;
+        // (return damage * 2; in one line is equally correct)
+    }
 
-    // --- Challenge 5 uses this ---
-    // void LogVictory()
-    // {
-    //     Debug.Log("Victory!");
-    // }
+    // Challenge 5 (was correct)
+    void LogVictory()
+    {
+        Debug.Log("Victory!");
+    }
 
-    // --- Challenge 6 uses this ---
-    // int Multiply(int a int b)
-    // {
-    //     return a * b;
-    // }
+    // Challenge 6 — FIX: comma between the parameters
+    int Multiply(int a, int b)
+    {
+        return a * b;
+    }
 
-    // --- Challenge 7 uses this ---
-    // int Heal(int currentHealth, int amount)
-    // {
-    //     return currentHealth + amount;
-    // }
+    // Challenge 7 (was correct — the bug was at the call site)
+    int Heal(int currentHealth, int amount)
+    {
+        return currentHealth + amount;
+    }
 
-    // --- Challenge 8 uses this ---
-    // int SumAll(int[] values)
-    // {
-    //     int total = 0;
-    //     for (int i = 0; i < values.Length; i++)
-    //     {
-    //         total = total + values[i];
-    //         return total;
-    //     }
-    //     return total;
-    // }
+    // Challenge 8 — FIX: removed the stray return inside the loop
+    int SumAll(int[] values)
+    {
+        int total = 0;
+        for (int i = 0; i < values.Length; i++)
+        {
+            total = total + values[i];
+        }
+        return total;
+    }
 
-    // --- Challenge 9 uses this ---
-    // int AmmoLeft(int ammo, int shotsFired)
-    // {
-    //     return shotsFired - ammo;
-    // }
+    // Challenge 9 — FIX: ammo - shotsFired, not the other way around
+    int AmmoLeft(int ammo, int shotsFired)
+    {
+        return ammo - shotsFired;
+    }
 
-    // --- Challenge 10 uses this ---
-    // bool CanAfford(int gold, int price)
-    // {
-    //     return gold < price;
-    // }
+    // Challenge 10 — FIX: >= instead of <
+    bool CanAfford(int gold, int price)
+    {
+        return gold >= price;
+    }
 }
