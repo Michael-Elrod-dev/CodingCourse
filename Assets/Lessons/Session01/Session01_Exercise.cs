@@ -110,13 +110,14 @@ public class Session01_Exercise : MonoBehaviour
         // =====================================================================
 
         bool hasRevive = false;
-        if (!(health == 1))
-        {
-            
-        }
+
         if (health <= 0 && !hasRevive)
         {
-            Debug.Log("")
+            Debug.Log("Game over.");
+        }
+        else
+        {
+            Debug.Log("Still fighting.");
         }
 
 
@@ -146,40 +147,40 @@ public class Session01_Exercise : MonoBehaviour
 
         // --- Challenge 2 ---
         // Declare a float called stamina set to 14.5 and log it.
-        float stamina = 14.5;
+        float stamina = 14.5f;
         Debug.Log("Stamina: " + stamina);
 
 
         // --- Challenge 3 ---
         // Declare an int called lives set to 3 and log it.
         // Note: the error message may point to a different line than you expect.
-        // int lives = 3
-        // Debug.Log("Lives: " + lives);
+        int lives = 3;
+        Debug.Log("Lives: " + lives);
 
 
         // --- Challenge 4 ---
         // Declare a bool called isReady set to false and log it.
-        // Bool isReady = false;
-        // Debug.Log("Ready: " + isReady);
+        bool isReady = false;
+        Debug.Log("Ready: " + isReady);
 
 
         // --- Challenge 5 ---
         // Log the message "Checkpoint 2 reached" to the Console.
-        // int checkpoint = 2;
-        // Debug.log("Checkpoint " + checkpoint + " reached");
+        int checkpoint = 2;
+        Debug.Log("Checkpoint " + checkpoint + " reached");
 
 
         // --- Challenge 6 ---
         // Declare a string called motto and log it.
-        // string motto = 'never quit';
-        // Debug.Log("Motto: " + motto);
+        string motto = "never quit";
+        Debug.Log("Motto: " + motto);
 
 
         // --- Challenge 7 ---
         // Declare an int called coins set to 50.
         // If coins equals 50, log "Exact change."
         int coins = 50;
-        if (coins = 50)
+        if (coins == 50)
         {
             Debug.Log("Exact change.");
         }
@@ -187,38 +188,38 @@ public class Session01_Exercise : MonoBehaviour
 
         // --- Challenge 8 ---
         // Declare an int called mana set to 75 and log it, then log spellCount.
-        // int spellCount = 3;
-        // Debug.Log("Mana: " + mana);
-        // int mana = 75;
-        // Debug.Log("Spells: " + spellCount);
+        int spellCount = 3;
+        int mana = 75;
+        Debug.Log("Mana: " + mana);
+        Debug.Log("Spells: " + spellCount);
 
 
         // --- Challenge 9 (logic error) ---
         // regenRate is 5. Expected output: "Slow regen"
-        // int regenRate = 5;
-        // if (regenRate < 8)
-        // {
-        //     Debug.Log("Fast regen");
-        // }
-        // else
-        // {
-        //     Debug.Log("Slow regen");
-        // }
+        int regenRate = 5;
+        if (regenRate > 8)
+        {
+            Debug.Log("Fast regen");
+        }
+        else
+        {
+            Debug.Log("Slow regen");
+        }
 
 
         // --- Challenge 10 (logic error) ---
         // shields = 2, hpRemaining = 0.
         // Rule: Safe only when shields and health are above zero.
         // Expected output: "Danger" (health is zero so the condition should fail)
-        // int shields = 2;
-        // int hpRemaining = 0;
-        // if (shields > 0 || hpRemaining > 0)
-        // {
-        //     Debug.Log("Safe");
-        // }
-        // else
-        // {
-        //     Debug.Log("Danger");
-        // }
+        int shields = 2;
+        int hpRemaining = 0;
+        if (shields > 0 && hpRemaining > 0)
+        {
+            Debug.Log("Safe");
+        }
+        else
+        {
+            Debug.Log("Danger");
+        }
     }
 }

@@ -46,8 +46,8 @@ public class Session03_Exercise : MonoBehaviour
         // =====================================================================
         // PART 1 — Define a method, call a method
         // A method is a named block of code. You write it ONCE, then run it
-        // whenever you want by "calling" its name. This is how you stop
-        // copy-pasting the same code over and over.
+        // whenever you want by "calling" it. This is how you stop
+        // copy-pasting the same code over and over which we'll get into later.
         //
         // A DEFINITION looks like this (it goes OUTSIDE Start, at class level):
         //
@@ -56,8 +56,8 @@ public class Session03_Exercise : MonoBehaviour
         //       Debug.Log("Hello!");
         //   }
         //
-        // Reading it: void = "gives nothing back" (more on that in Part 4),
-        // SayHello = the name, () = empty for now, { } = the code that runs.
+        // Reading it: void = "returns nothing" (more on that in Part 4),
+        // SayHello = the name, () = Parameters, empty for now, { } = the code that runs.
         //
         // A CALL looks like this (written here, inside Start):
         //
@@ -104,8 +104,6 @@ public class Session03_Exercise : MonoBehaviour
         //   Wave 2 incoming!
         //   Wave 3 incoming!
         //
-        // Bonus (optional): replace your three calls with a for loop that
-        // calls AnnounceWave(i) — loops and methods combine naturally.
         // =====================================================================
 
         // TODO
@@ -135,15 +133,15 @@ public class Session03_Exercise : MonoBehaviour
 
         // =====================================================================
         // PART 4 — Return values: getting an answer back
-        // So far every method was void — it DID something but handed nothing
+        // So far every method was void — it DID something but returned nothing
         // back. Replace void with a type, and the method returns a value:
         //
         //   int Add(int a, int b)
         //   {
-        //       return a + b;    // return = "send this back and exit NOW"
+        //       return a + b;    // return = "return this and exit NOW"
         //   }
         //
-        //   int result = Add(3, 5);    // the call BECOMES the value 8
+        //   int result = Add(3, 5);    // the call BECOMES the value 8 how cool!
         //
         // KEY IDEA: returning is not printing, and it is not saving. The
         // value comes back to the caller — if the caller doesn't store it
@@ -243,7 +241,7 @@ public class Session03_Exercise : MonoBehaviour
         // Some methods are correct as written and some are broken. For the
         // logic errors, the bug might be in the call here, in the method
         // down there, or in how the two talk to each other — deciding where
-        // to look IS the skill.
+        // to look is part of the skill.
         //
         // Challenges 1–6 are compile errors — Unity won't run at all until fixed.
         // Challenges 7–10 compile fine but produce WRONG output. Expected
@@ -255,14 +253,13 @@ public class Session03_Exercise : MonoBehaviour
 
         // --- Challenge 1 ---
         // Sound the alarm. Uncomment the method SoundAlarm at the bottom of
-        // the file too — it is correct. This call is what's broken.
+        // the file too.
         // Expected output: ALARM! Enemies incoming!
         // SoundAlarm;
 
 
         // --- Challenge 2 ---
-        // Taunt twice. Uncomment RepeatTaunt at the bottom too — it is
-        // correct. Look at what it needs before you fix the call.
+        // Taunt twice.
         // Expected output:
         //   Taunt!
         //   Taunt!
@@ -270,36 +267,31 @@ public class Session03_Exercise : MonoBehaviour
 
 
         // --- Challenge 3 ---
-        // Award 50 gold. Uncomment GrantGold at the bottom too — it is
-        // correct.
+        // Award 50 gold.
         // Expected output: Gold gained: 50
         // GrantGold("fifty");
 
 
         // --- Challenge 4 ---
-        // Double a damage number. Also uncomment the method DoubleDamage at
-        // the bottom of the file.
+        // Double a damage number.
         // Expected output: Double damage: 12
         // Debug.Log("Double damage: " + DoubleDamage(6));
 
 
         // --- Challenge 5 ---
-        // Celebrate the win. Uncomment LogVictory at the bottom too — it is
-        // correct.
+        // Celebrate the win.
         // Expected output: Victory!
         // string message = LogVictory();
 
 
         // --- Challenge 6 ---
-        // Multiply two numbers. Also uncomment the method Multiply at the
-        // bottom of the file.
+        // Multiply two numbers.
         // Expected output: Product: 20
         // Debug.Log("Product: " + Multiply(4, 5));
 
 
         // --- Challenge 7 (logic error) ---
-        // Drink a potion. Uncomment Heal at the bottom too — Heal itself is
-        // correct. This compiles and runs.
+        // Drink a potion.
         // Expected output: HP after potion: 65 — but it logs 40. Why?
         // int hp = 40;
         // Heal(hp, 25);
@@ -307,23 +299,20 @@ public class Session03_Exercise : MonoBehaviour
 
 
         // --- Challenge 8 (logic error) ---
-        // Total up the loot. Also uncomment the method SumAll at the bottom.
-        // This compiles and runs.
+        // Total up the loot.
         // Expected output: Loot total: 60 — but it logs 10. Find the bug.
         // int[] loot = { 10, 20, 30 };
         // Debug.Log("Loot total: " + SumAll(loot));
 
 
         // --- Challenge 9 (logic error) ---
-        // 30 bullets, 12 fired. Also uncomment the method AmmoLeft at the
-        // bottom.
+        // 30 bullets, 12 fired.
         // Expected output: Ammo left: 18 — but it logs -18. Find the bug.
         // Debug.Log("Ammo left: " + AmmoLeft(30, 12));
 
 
         // --- Challenge 10 (logic error) ---
-        // You have 40 gold; the sword costs 100. Also uncomment the method
-        // CanAfford at the bottom.
+        // You have 40 gold; the sword costs 100.
         // Expected output: Not enough gold. — but it logs Purchased!
         // if (CanAfford(40, 100))
         // {

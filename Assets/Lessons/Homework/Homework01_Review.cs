@@ -70,6 +70,7 @@ public class Homework01_Review : MonoBehaviour
 
         // --- A3 — combined conditions -----------------------------------------
 
+        // SHOW BINARY EXPLANATION!!!!!!!! 0 -> 1
         // bool isNight = true;
         // bool hasTorch = false;
         // if (isNight && !hasTorch)
