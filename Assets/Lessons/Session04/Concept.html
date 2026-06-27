@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session 4 — Classes &amp; Objects (Concept Guide)</title>
+<style>
+  :root{
+    --bg:#fbfbfd; --ink:#1d1d1f; --muted:#6b6b73; --soft:#8a8a93;
+    --card:#ffffff; --line:#e4e4ec; --line2:#d3d3dd;
+    --accent:#2d6cdf; --accent-soft:#eaf1ff;
+    --bad:#d23f3f; --bad-soft:#fdecec;
+    --good:#1f9d57; --good-soft:#e9f8ef;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);
+       -webkit-font-smoothing:antialiased;overflow:hidden}
+
+  /* layout */
+  header.bar{position:fixed;top:0;left:0;right:0;height:54px;display:flex;
+       align-items:center;justify-content:space-between;padding:0 24px;
+       border-bottom:1px solid var(--line);background:rgba(251,251,253,.92);
+       backdrop-filter:blur(6px);z-index:10}
+  header .brand{font-weight:700;font-size:15px;letter-spacing:.2px}
+  header .brand span{color:var(--accent)}
+  header .count{font-variant-numeric:tabular-nums;color:var(--muted);font-size:14px}
+
+  .stage{position:fixed;inset:54px 0 64px 0;display:flex;align-items:center;
+       justify-content:center;padding:clamp(16px,3vw,48px)}
+  .slide{display:none;width:min(1040px,94vw);max-height:100%;overflow:auto}
+  .slide.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .kicker{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.06em;
+       text-transform:uppercase;color:var(--accent);background:var(--accent-soft);
+       padding:5px 11px;border-radius:999px;margin-bottom:14px}
+  h1{font-size:clamp(28px,4.6vw,46px);line-height:1.08;letter-spacing:-.02em}
+  h2{font-size:clamp(22px,3.4vw,34px);line-height:1.12;letter-spacing:-.01em}
+  .lead{color:var(--muted);font-size:clamp(15px,1.7vw,19px);margin-top:10px;max-width:64ch}
+  .take{margin-top:22px;font-size:clamp(15px,1.8vw,19px);line-height:1.45;max-width:70ch}
+  .take b{color:var(--accent)}
+
+  /* pieces */
+  .chips{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 6px}
+  .chip{font-family:var(--mono);font-size:clamp(13px,1.5vw,16px);background:#f1f1f5;
+       border:1px solid var(--line2);border-radius:9px;padding:11px 15px}
+  .card{background:var(--card);border:1px solid var(--line2);border-radius:16px;
+       box-shadow:0 1px 0 rgba(0,0,0,.02),0 12px 30px -22px rgba(0,0,0,.25)}
+  .pad{padding:clamp(18px,2.6vw,30px)}
+
+  .callout{margin-top:22px;border:1px solid var(--line2);border-radius:14px;
+       background:var(--card);overflow:hidden}
+  .callout .code{font-family:var(--mono);font-size:clamp(13px,1.5vw,16px);
+       padding:16px 18px;color:var(--muted)}
+  .callout .res{font-family:var(--mono);font-size:clamp(14px,1.6vw,17px);
+       padding:14px 18px;border-top:1px solid var(--line);background:var(--bad-soft)}
+  .res .x{color:var(--bad);font-weight:700}
+  .res .note{color:var(--muted)}
+
+  /* car */
+  .car{display:grid;grid-template-columns:1fr 1px 1fr;gap:0;align-items:stretch}
+  .car .col{padding:6px 22px}
+  .car .vr{background:var(--line)}
+  .car h3{font-size:clamp(19px,2.2vw,24px);margin-bottom:2px}
+  .car .sub{color:var(--soft);font-size:14px;margin-bottom:16px}
+  .car .cap{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+       color:var(--accent);margin-bottom:10px}
+  .car .items{font-family:var(--mono);font-size:clamp(14px,1.7vw,18px);line-height:2}
+  .emoji{font-size:clamp(34px,5vw,52px);line-height:1}
+
+  /* blueprint -> objects */
+  .flow{display:grid;grid-template-columns:1.05fr auto 1fr;gap:clamp(12px,2vw,26px);
+       align-items:center;margin-top:20px}
+  .blueprint{border:2px dashed var(--accent);border-radius:16px;padding:clamp(16px,2vw,24px);
+       background:linear-gradient(0deg,var(--accent-soft),var(--accent-soft))}
+  .blueprint .name{font-size:clamp(20px,2.4vw,26px);font-weight:700}
+  .blueprint .tag{color:var(--accent);font-size:13px;font-weight:600;margin-bottom:12px}
+  .field{font-family:var(--mono);font-size:clamp(14px,1.6vw,17px);padding:5px 0}
+  .blueprint hr{border:0;border-top:1px solid var(--line2);margin:12px 0}
+  .method{font-family:var(--mono);font-size:clamp(14px,1.6vw,17px);color:var(--accent);padding:4px 0}
+  .arrow{display:flex;flex-direction:column;align-items:center;color:var(--accent);font-weight:700}
+  .arrow .a{font-size:clamp(28px,4vw,42px);line-height:1}
+  .arrow .lbl{font-family:var(--mono);font-size:14px;margin-top:-4px}
+  .objs{display:flex;flex-direction:column;gap:14px}
+  .obj{border:1.5px solid var(--accent);border-radius:13px;padding:14px 16px;background:var(--card)}
+  .obj .t{font-weight:700;font-size:clamp(17px,2vw,21px)}
+  .obj .row{font-family:var(--mono);font-size:clamp(13px,1.5vw,16px);color:var(--muted);
+       display:flex;gap:18px;margin-top:4px}
+
+  /* players / independence */
+  .players{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+  .player{border:1px solid var(--line2);border-radius:14px;padding:18px;background:var(--card)}
+  .player.lit{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  .player .pn{font-weight:700;font-size:clamp(18px,2.2vw,23px)}
+  .player .sc{font-family:var(--mono);font-size:clamp(15px,1.8vw,19px);margin-top:6px}
+  .player .delta{font-family:var(--mono);font-size:13px;color:var(--accent);margin-top:4px}
+  .player.calm .keep{font-family:var(--mono);font-size:13px;color:var(--good);margin-top:4px;font-weight:700}
+  .console{margin-top:18px;background:#14151a;border-radius:12px;padding:14px 18px;
+       font-family:var(--mono);font-size:clamp(13px,1.5vw,16px);color:#e8e8ee;line-height:1.7}
+  .console .g{color:#7fd1a0}
+  .console .d{color:#9aa0ad}
+
+  /* session 3 link */
+  .vs{display:grid;gap:14px;margin-top:20px}
+  .row2{display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:center;
+       border:1px solid var(--line2);border-radius:13px;padding:16px 18px;background:var(--card)}
+  .row2.now{border-color:var(--accent);background:var(--accent-soft)}
+  .row2 .when{font-weight:700;color:var(--muted)}
+  .row2.now .when{color:var(--accent)}
+  .row2 code{font-family:var(--mono);font-size:clamp(14px,1.7vw,18px)}
+  .row2 .why{grid-column:2;color:var(--muted);font-size:14px;margin-top:2px}
+
+  /* recap */
+  .defs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
+  .def{border:1px solid var(--line2);border-radius:13px;padding:16px 18px;background:var(--card)}
+  .def .k{font-weight:700;color:var(--accent);font-size:clamp(16px,1.9vw,20px)}
+  .def .v{color:var(--muted);font-size:clamp(14px,1.6vw,17px);margin-top:4px}
+  .cta{margin-top:26px;font-size:clamp(18px,2.4vw,26px);font-weight:700}
+  .cta .arrowtxt{color:var(--accent)}
+
+  /* nav */
+  footer.nav{position:fixed;bottom:0;left:0;right:0;height:64px;display:flex;
+       align-items:center;justify-content:center;gap:18px;border-top:1px solid var(--line);
+       background:rgba(251,251,253,.92);backdrop-filter:blur(6px);z-index:10}
+  .nbtn{appearance:none;border:1px solid var(--line2);background:var(--card);color:var(--ink);
+       font:inherit;font-weight:600;font-size:14px;padding:9px 18px;border-radius:10px;cursor:pointer}
+  .nbtn:hover{border-color:var(--accent);color:var(--accent)}
+  .nbtn:disabled{opacity:.4;cursor:default;border-color:var(--line2);color:var(--muted)}
+  .dots{display:flex;gap:8px}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--line2);border:0;cursor:pointer;padding:0}
+  .dot.on{background:var(--accent)}
+  .hint{position:fixed;bottom:72px;right:18px;color:var(--soft);font-size:12px;z-index:5}
+  @media (max-width:680px){
+    .car{grid-template-columns:1fr}.car .vr{display:none}
+    .flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}
+    .players,.defs{grid-template-columns:1fr}
+    .row2{grid-template-columns:1fr}.row2 .why{grid-column:1}
+  }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand">Session 4 · <span>Classes &amp; Objects</span></div>
+  <div class="count" id="count">1 / 7</div>
+</header>
+
+<main class="stage">
+
+  <!-- 1 -->
+  <section class="slide active">
+    <div class="kicker">The big idea</div>
+    <h1>How do we make code<br>represent a <em>thing</em>?</h1>
+    <p class="lead">Variables, loops, and methods all work on loose, separate values.
+       Today we learn to bundle the data <b>and</b> the actions that go with it into one
+       unit — an <b>object</b> — built from a <b>class</b>.</p>
+    <p class="take">By the end you'll have built an <code>Enemy</code> that knows its own
+       health and how to take damage. First, watch how the pieces fit.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="slide">
+    <div class="kicker">1 — The old way</div>
+    <h2>Loose, disconnected pieces</h2>
+    <p class="lead">To remember one enemy we need two variables. For two enemies, four —
+       and nothing ties a name to its own health.</p>
+    <div class="chips">
+      <div class="chip">goblinName</div>
+      <div class="chip">goblinHealth</div>
+      <div class="chip">skeletonName</div>
+      <div class="chip">skeletonHealth</div>
+    </div>
+    <div class="callout">
+      <div class="code">Debug.Log(goblinName + " has " + skeletonHealth + " HP");</div>
+      <div class="res"><span class="x">→ "Goblin has 12 HP"&nbsp;&nbsp;✗</span>
+        <span class="note">&nbsp;&nbsp;one enemy's name, another's health — C# never complains</span></div>
+    </div>
+    <p class="take">Four values in a row. The computer has no idea which ones
+       <b>belong together</b>.</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="slide">
+    <div class="kicker">2 — The idea</div>
+    <h2>Group them into one unit — an object</h2>
+    <p class="lead">A real thing has stuff it <em>is</em> and stuff it <em>does</em>.
+       A class lets code define a brand-new kind of thing the same way.</p>
+    <div class="card pad" style="margin-top:22px">
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:6px">
+        <span class="emoji">🚗</span>
+        <div><h3 style="font-size:clamp(20px,2.4vw,26px)">Car</h3>
+        <div class="car-sub" style="color:var(--soft);font-size:14px">one object — what it has and what it does, together</div></div>
+      </div>
+      <div class="car" style="margin-top:14px">
+        <div class="col">
+          <div class="cap">Fields — what it has</div>
+          <div class="items">make<br>model<br>color</div>
+        </div>
+        <div class="vr"></div>
+        <div class="col">
+          <div class="cap">Methods — what it does</div>
+          <div class="items">Start()<br>Stop()<br>Move()</div>
+        </div>
+      </div>
+    </div>
+    <p class="take"><b>Fields</b> = the data it carries. <b>Methods</b> = the things it can do.</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="slide">
+    <div class="kicker">3 — Class → Objects</div>
+    <h2>One blueprint, many objects</h2>
+    <div class="flow">
+      <div class="blueprint">
+        <div class="name">Enemy</div>
+        <div class="tag">the template (a class)</div>
+        <div class="field">Name:&nbsp;&nbsp;&nbsp;____</div>
+        <div class="field">Health:&nbsp;____</div>
+        <hr>
+        <div class="method">+ TakeDamage()</div>
+        <div class="method">+ IsDead()</div>
+      </div>
+      <div class="arrow"><div class="a">→</div><div class="lbl">new</div></div>
+      <div class="objs">
+        <div class="obj"><div class="t">Goblin</div>
+          <div class="row"><span>Name: Goblin</span><span>Health: 30</span></div></div>
+        <div class="obj"><div class="t">Skeleton</div>
+          <div class="row"><span>Name: Skeleton</span><span>Health: 12</span></div></div>
+      </div>
+    </div>
+    <p class="take">The class is the cookie-cutter; each object is a cookie. Every object
+       carries its <b>own</b> separate data.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="slide">
+    <div class="kicker">4 — See it live</div>
+    <h2>Each object is its own thing</h2>
+    <p class="lead">Two players from one <code>Player</code> blueprint. We score Ana
+       twice — and Bo never moves.</p>
+    <div class="players">
+      <div class="player lit"><div class="pn">Ana</div>
+        <div class="sc">score: 110</div>
+        <div class="delta">+70, then +40</div></div>
+      <div class="player calm"><div class="pn">Bo</div>
+        <div class="sc">score: 0</div>
+        <div class="keep">untouched ✓</div></div>
+    </div>
+    <div class="console">
+      <div><span class="d">ana.AddPoints(70);</span> <span class="g">Ana scores 70! Total: 70</span></div>
+      <div><span class="d">ana.AddPoints(40);</span> <span class="g">Ana scores 40! Total: 110</span></div>
+      <div><span class="g">Bo's score is still 0</span></div>
+    </div>
+    <p class="take">Same blueprint, separate objects. Touching Ana does nothing to Bo.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="slide">
+    <div class="kicker">The link back to Session 3</div>
+    <h2>Fewer things to pass</h2>
+    <p class="lead">Last week your methods needed everything handed in. When the data lives
+       on the object, the method already has it.</p>
+    <div class="vs">
+      <div class="row2">
+        <div class="when">Last week</div>
+        <code>TakeDamage(name, health, amount)</code>
+        <div class="why">you passed everything in — three things</div>
+      </div>
+      <div class="row2 now">
+        <div class="when">This week</div>
+        <code>goblin.TakeDamage(amount)</code>
+        <div class="why">just one — the goblin already knows its own name &amp; health</div>
+      </div>
+    </div>
+    <p class="take">The data and the actions on it finally live <b>together</b>.</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="slide">
+    <div class="kicker">Recap</div>
+    <h2>Four words for today</h2>
+    <div class="defs">
+      <div class="def"><div class="k">class</div><div class="v">a blueprint — a new <em>kind of thing</em></div></div>
+      <div class="def"><div class="k">object</div><div class="v">one real thing stamped out with <code>new</code></div></div>
+      <div class="def"><div class="k">field</div><div class="v">data the object <em>has</em></div></div>
+      <div class="def"><div class="k">method</div><div class="v">something the object <em>does</em></div></div>
+    </div>
+    <div class="cta">Now build your own — <span class="arrowtxt">Enemy →</span></div>
+  </section>
+
+</main>
+
+<footer class="nav">
+  <button class="nbtn" id="prev">‹ Back</button>
+  <div class="dots" id="dots"></div>
+  <button class="nbtn" id="next">Next ›</button>
+</footer>
+<div class="hint">← / → or Space to move</div>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const dotsWrap = document.getElementById('dots');
+  const count = document.getElementById('count');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  let i = 0;
+
+  slides.forEach((_, k) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (k === 0 ? ' on' : '');
+    d.setAttribute('aria-label', 'Go to slide ' + (k + 1));
+    d.addEventListener('click', () => show(k));
+    dotsWrap.appendChild(d);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function show(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    dots.forEach((d, k) => d.classList.toggle('on', k === i));
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+  }
+  prev.addEventListener('click', () => show(i - 1));
+  next.addEventListener('click', () => show(i + 1));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ') { show(i + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft') { show(i - 1); }
+    else if (e.key === 'Home') { show(0); }
+    else if (e.key === 'End') { show(slides.length - 1); }
+  });
+  show(0);
+</script>
+</body>
+</html>
