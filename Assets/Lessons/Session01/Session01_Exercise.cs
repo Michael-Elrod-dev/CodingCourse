@@ -6,10 +6,8 @@ using UnityEngine;
 // Type everything yourself — no copy-paste.
 // Press Play after each part to check your output before moving on.
 
-public class Session01_Exercise : MonoBehaviour
-{
-    void Start()
-    {
+public class Session01_Exercise : MonoBehaviour {
+    void Start() {
         // =====================================================================
         // PART 1 — Declare your variables
         // Declare ALL of the following (pick your own values):
@@ -84,20 +82,13 @@ public class Session01_Exercise : MonoBehaviour
         //     75.0f / 100.0 = 0.75f
         float healthPercentage = (float)health / 150.0f * 100.0f;
 
-        if (healthPercentage <= 0)
-        {
+        if (healthPercentage <= 0) {
             Debug.Log("Status: Dead");
-        }
-        else if (healthPercentage < 30)
-        {
+        } else if (healthPercentage < 30) {
             Debug.Log("Status: Critical");
-        }
-        else if (healthPercentage < 60)
-        {
+        } else if (healthPercentage < 60) {
             Debug.Log("Status: Hurt");
-        }
-        else
-        {
+        } else {
             Debug.Log("Status: Healthy");
         }
 
@@ -111,12 +102,9 @@ public class Session01_Exercise : MonoBehaviour
 
         bool hasRevive = false;
 
-        if (health <= 0 && !hasRevive)
-        {
+        if (health <= 0 && !hasRevive) {
             Debug.Log("Game over.");
-        }
-        else
-        {
+        } else {
             Debug.Log("Still fighting.");
         }
 
@@ -180,8 +168,7 @@ public class Session01_Exercise : MonoBehaviour
         // Declare an int called coins set to 50.
         // If coins equals 50, log "Exact change."
         int coins = 50;
-        if (coins == 50)
-        {
+        if (coins == 50) {
             Debug.Log("Exact change.");
         }
 
@@ -197,12 +184,9 @@ public class Session01_Exercise : MonoBehaviour
         // --- Challenge 9 (logic error) ---
         // regenRate is 5. Expected output: "Slow regen"
         int regenRate = 5;
-        if (regenRate > 8)
-        {
+        if (regenRate > 8) {
             Debug.Log("Fast regen");
-        }
-        else
-        {
+        } else {
             Debug.Log("Slow regen");
         }
 
@@ -213,12 +197,9 @@ public class Session01_Exercise : MonoBehaviour
         // Expected output: "Danger" (health is zero so the condition should fail)
         int shields = 2;
         int hpRemaining = 0;
-        if (shields > 0 && hpRemaining > 0)
-        {
+        if (shields > 0 && hpRemaining > 0) {
             Debug.Log("Safe");
-        }
-        else
-        {
+        } else {
             Debug.Log("Danger");
         }
     }

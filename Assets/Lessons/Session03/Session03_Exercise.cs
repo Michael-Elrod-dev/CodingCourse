@@ -12,16 +12,13 @@ using UnityEngine;
 // bottom of this file (outside Start). The code that CALLS them stays
 // here inside Start, like always. Each part tells you what goes where.
 
-public class Session03_Exercise : MonoBehaviour
-{
-    void Start()
-    {
+public class Session03_Exercise : MonoBehaviour {
+    void Start() {
         // =====================================================================
         // WARM-UP — while loop refresher
         // Last session ended at while loops. Quick reminder before methods:
         //
-        //   while (someCondition)
-        //   {
+        //   while (someCondition) {
         //       // repeats until someCondition becomes false —
         //       // YOU must change something inside, or it never ends
         //   }
@@ -42,8 +39,7 @@ public class Session03_Exercise : MonoBehaviour
         // =====================================================================
 
         int torches = 9;
-        while (torches > 0)
-        {
+        while (torches > 0) {
             Debug.Log("Torches left: " + torches);
             torches = torches - 3;      // or: torches -= 3;
         }
@@ -63,8 +59,7 @@ public class Session03_Exercise : MonoBehaviour
         //
         // A DEFINITION looks like this (it goes OUTSIDE Start, at class level):
         //
-        //   void SayHello()
-        //   {
+        //   void SayHello() {
         //       Debug.Log("Hello!");
         //   }
         //
@@ -104,8 +99,7 @@ public class Session03_Exercise : MonoBehaviour
         // is a variable declared inside the parentheses — it gets its value
         // from whoever calls the method:
         //
-        //   void Greet(string name)        // definition
-        //   {
+        //   void Greet(string name)        // definition {
         //       Debug.Log("Hello, " + name);
         //   }
         //
@@ -168,8 +162,7 @@ public class Session03_Exercise : MonoBehaviour
         // So far every method was void — it DID something but returned nothing
         // back. Replace void with a type, and the method returns a value:
         //
-        //   int Add(int a, int b)
-        //   {
+        //   int Add(int a, int b) {
         //       return a + b;    // return = "return this and exit NOW"
         //   }
         
@@ -214,8 +207,7 @@ public class Session03_Exercise : MonoBehaviour
         // condition you check often. Name them like questions: IsDead,
         // HasKey, CanAfford.
         //
-        //   bool IsEmpty(int count)
-        //   {
+        //   bool IsEmpty(int count) {
         //       return count == 0;   // a comparison IS a bool — return it
         //   }
         //
@@ -236,23 +228,17 @@ public class Session03_Exercise : MonoBehaviour
         //   CRITICAL - find a potion!
         // =====================================================================
 
-        if (IsCritical(playerHealth))
-        {
+        if (IsCritical(playerHealth)) {
             Debug.Log("CRITICAL - find a potion!");
-        }
-        else
-        {
+        } else {
             Debug.Log("Stable.");
         }
 
         playerHealth = ApplyDamage(playerHealth, 30);   // 45 → 15
 
-        if (IsCritical(playerHealth))
-        {
+        if (IsCritical(playerHealth)) {
             Debug.Log("CRITICAL - find a potion!");
-        }
-        else
-        {
+        } else {
             Debug.Log("Stable.");
         }
         // Output:
@@ -398,12 +384,9 @@ public class Session03_Exercise : MonoBehaviour
         // --- Challenge 10 (logic error) ---
         // You have 40 gold; the sword costs 100.
         // Expected output: Not enough gold. — but it logs Purchased!
-        if (CanAfford(40, 100))
-        {
+        if (CanAfford(40, 100)) {
             Debug.Log("Purchased!");
-        }
-        else
-        {
+        } else {
             Debug.Log("Not enough gold.");
         }
         // Output: Not enough gold.
@@ -417,41 +400,34 @@ public class Session03_Exercise : MonoBehaviour
     // =========================================================================
 
     // Part 1
-    void PrintBattleCry()
-    {
+    void PrintBattleCry() {
         Debug.Log("For glory!");
     }
 
     // Part 2
-    void AnnounceWave(int waveNumber)
-    {
+    void AnnounceWave(int waveNumber) {
         Debug.Log("Wave " + waveNumber + " incoming!");
     }
 
     // Part 3
-    void LogAttack(string attacker, int damage)
-    {
+    void LogAttack(string attacker, int damage) {
         Debug.Log(attacker + " deals " + damage + " damage!");
     }
 
     // Part 4
-    int ApplyDamage(int health, int damage)
-    {
+    int ApplyDamage(int health, int damage) {
         return health - damage;
     }
 
     // Part 5
-    bool IsCritical(int health)
-    {
+    bool IsCritical(int health) {
         return health < 30;
     }
 
     // Part 6
-    int TotalHealth(int[] enemies)
-    {
+    int TotalHealth(int[] enemies) {
         int total = 0;
-        for (int i = 0; i < enemies.Length; i++)
-        {
+        for (int i = 0; i < enemies.Length; i++) {
             total = total + enemies[i];
         }
         return total;
@@ -462,72 +438,60 @@ public class Session03_Exercise : MonoBehaviour
     // =========================================================================
 
     // Challenge 1 (was correct)
-    void SoundAlarm()
-    {
+    void SoundAlarm() {
         Debug.Log("ALARM! Enemies incoming!");
     }
 
     // Challenge 2 (was correct)
-    void RepeatTaunt(int times)
-    {
-        for (int i = 0; i < times; i++)
-        {
+    void RepeatTaunt(int times) {
+        for (int i = 0; i < times; i++) {
             Debug.Log("Taunt!");
         }
     }
 
     // Challenge 3 (was correct)
-    void GrantGold(int amount)
-    {
+    void GrantGold(int amount) {
         Debug.Log("Gold gained: " + amount);
     }
 
     // Challenge 4 — FIX: added the missing return statement
-    int DoubleDamage(int damage)
-    {
+    int DoubleDamage(int damage) {
         int doubled = damage * 2;
         return doubled;
         // (return damage * 2; in one line is equally correct)
     }
 
     // Challenge 5 (was correct)
-    void LogVictory()
-    {
+    void LogVictory() {
         Debug.Log("Victory!");
     }
 
     // Challenge 6 — FIX: comma between the parameters
-    int Multiply(int a, int b)
-    {
+    int Multiply(int a, int b) {
         return a * b;
     }
 
     // Challenge 7 (was correct — the bug was at the call site)
-    int Heal(int currentHealth, int amount)
-    {
+    int Heal(int currentHealth, int amount) {
         return currentHealth + amount;
     }
 
     // Challenge 8 — FIX: removed the stray return inside the loop
-    int SumAll(int[] values)
-    {
+    int SumAll(int[] values) {
         int total = 0;
-        for (int i = 0; i < values.Length; i++)
-        {
+        for (int i = 0; i < values.Length; i++) {
             total = total + values[i];
         }
         return total;
     }
 
     // Challenge 9 — FIX: ammo - shotsFired, not the other way around
-    int AmmoLeft(int ammo, int shotsFired)
-    {
+    int AmmoLeft(int ammo, int shotsFired) {
         return ammo - shotsFired;
     }
 
     // Challenge 10 — FIX: >= instead of <
-    bool CanAfford(int gold, int price)
-    {
+    bool CanAfford(int gold, int price) {
         return gold >= price;
     }
 }

@@ -138,16 +138,11 @@ Used inside conditions — always evaluate to `true` or `false`.
 ## 9. Conditionals
 
 ```csharp
-if (health <= 0)
-{
+if (health <= 0) {
     Debug.Log("Dead");
-}
-else if (health < 30)
-{
+} else if (health < 30) {
     Debug.Log("Critical");
-}
-else
-{
+} else {
     Debug.Log("OK");
 }
 ```
@@ -169,13 +164,11 @@ Combine or flip conditions.
 | `!` | NOT | Flips `true` to `false` and vice versa |
 
 ```csharp
-if (health < 30 && !hasPotion)
-{
+if (health < 30 && !hasPotion) {
     Debug.Log("Low health and no potion — in trouble.");
 }
 
-if (isAlive || hasRevive)
-{
+if (isAlive || hasRevive) {
     Debug.Log("Game can continue.");
 }
 ```
@@ -247,20 +240,17 @@ Rigidbody rb = GetComponent<Rigidbody>();
 
 ```csharp
 // for — when you know how many times
-for (int i = 0; i < 5; i++)
-{
+for (int i = 0; i < 5; i++) {
     Debug.Log(i);
 }
 
 // while — when you stop on a condition
-while (health > 0)
-{
+while (health > 0) {
     health -= 10;
 }
 
 // foreach — iterate over a collection
-foreach (string item in inventory)
-{
+foreach (string item in inventory) {
     Debug.Log(item);
 }
 ```
@@ -277,8 +267,7 @@ scores[2]        // last item — always Length - 1
 scores.Length    // item count (no parentheses — it's not a method)
 
 // The standard "walk the whole array" loop:
-for (int i = 0; i < scores.Length; i++)
-{
+for (int i = 0; i < scores.Length; i++) {
     Debug.Log(scores[i]);
 }
 ```
@@ -291,8 +280,7 @@ for (int i = 0; i < scores.Length; i++)
 
 ```csharp
 // Define
-int Add(int a, int b)
-{
+int Add(int a, int b) {
     return a + b;
 }
 
@@ -300,8 +288,7 @@ int Add(int a, int b)
 int result = Add(3, 5);  // result is 8
 
 // void = returns nothing
-void PrintScore()
-{
+void PrintScore() {
     Debug.Log("Score: " + score);
 }
 ```
@@ -309,3 +296,36 @@ void PrintScore()
 > **Where methods live:** definitions go at *class level* — inside the class braces but **outside** `Start`. Calls go wherever you want the code to run (usually inside `Start`).
 
 > **Returning isn't saving:** `Heal(hp, 25);` alone changes nothing — the answer comes back to the caller and vanishes if unused. Store it: `hp = Heal(hp, 25);`.
+
+---
+
+## 16. MonoBehaviour vs Plain Class — Session 5
+
+Every script you attach to a GameObject declares itself like this:
+
+```csharp
+public class Session05_Exercise : MonoBehaviour {
+    ...
+}
+```
+
+The `: MonoBehaviour` suffix makes the class a **Unity component**. That's what buys you:
+
+- it can be attached to a GameObject
+- Unity calls `Start()` / `Update()` on it automatically
+- `transform` (and friends) work inside it
+
+A **plain class** (no suffix — like `Enemy` or `Hero`) is the opposite deal: Unity ignores it, and *your code* owns it.
+
+| | MonoBehaviour script | Plain class |
+|---|---|---|
+| Declared as | `class X : MonoBehaviour` | `class X` |
+| Who creates it | Unity, when you attach it | your code — `new X(...)` |
+| `new X(...)` | ❌ never (Unity warns you) | ✅ that's the whole point |
+| Constructor | no — Unity owns setup | yes |
+| `Start` / `Update` called | yes | no |
+| Examples | `Session05_Exercise` | `Enemy`, `Hero` |
+
+> **Rule of thumb:** lives in the scene and Unity runs it → **MonoBehaviour**. Just data + actions your code owns → **plain class**.
+
+> The `: Something` syntax has a real name — *inheritance* — and it can do much more than this. Later topic; for now, treat `: MonoBehaviour` as "this is a Unity component."

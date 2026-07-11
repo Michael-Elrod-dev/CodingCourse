@@ -1,17 +1,15 @@
 using UnityEngine;
 
-// Session 4 — INTRODUCTION
+// Session 4 — INTRODUCTION   (COMPLETED — filled-in reference)
 //
-// Just watch and follow along — you don't need to type this one perfectly.
-// Right after, you'll build your OWN class from scratch in the Exercise.
+// The live demo, built together on the projector. Students watched this, then
+// built their own Enemy in the Exercise. Console output shown after each beat.
 //
 // Today's question: how do we make code represent a THING — an enemy, a
 // player — instead of a pile of loose, disconnected variables?
 
-public class Session04_Intro : MonoBehaviour
-{
-    void Start()
-    {
+public class Session04_Intro : MonoBehaviour {
+    void Start() {
         // =================================================================
         // BEAT 1 — the old way: loose, disconnected pieces
         // To remember one enemy we need two variables. For two enemies, four.
@@ -19,8 +17,18 @@ public class Session04_Intro : MonoBehaviour
         // and C# won't notice.
         // =================================================================
 
-        // ▶ TYPE LIVE: two enemies as four loose variables; log them; then
-        //   log goblinName together with skeletonHealth and watch the nonsense.
+        string goblinName = "Goblin";
+        int goblinHealth = 30;
+        string skeletonName = "Skeleton";
+        int skeletonHealth = 12;
+
+        Debug.Log(goblinName + " has " + goblinHealth + " HP");
+        Debug.Log(skeletonName + " has " + skeletonHealth + " HP");
+        Debug.Log(goblinName + " has " + skeletonHealth + " HP");   // the mix-up
+        // Output:
+        //   Goblin has 30 HP
+        //   Skeleton has 12 HP
+        //   Goblin has 12 HP        <- nonsense, and C# never complains
 
 
         // =================================================================
@@ -35,24 +43,56 @@ public class Session04_Intro : MonoBehaviour
 
         // =================================================================
         // BEAT 3 — class = blueprint, object = one stamped out with `new`
-        // We make two players from the single Player blueprint. Each gets its
-        // OWN name and score, and acts on its own data.
+        // Two players from the single Player blueprint. Each gets its OWN
+        // name and score, and acts on its own data.
         // =================================================================
 
-        // ▶ TYPE LIVE: make two Players; give them names and scores; score Ana
-        //   twice; then prove Bo is untouched; then check who IsWinning().
+        Player ana = new Player();
+        ana.name = "Ana";
+        ana.score = 0;
 
+        Player bo = new Player();
+        bo.name = "Bo";
+        bo.score = 0;
+
+        ana.AddPoints(70);
+        ana.AddPoints(40);
+        // Output:
+        //   Ana scores 70! Total: 70
+        //   Ana scores 40! Total: 110
+
+        // The punchline — Bo was never touched, so Bo is untouched:
+        Debug.Log(bo.name + "'s score is still " + bo.score);
+        // Output: Bo's score is still 0
+
+        // A method that answers a yes/no question (Session 3, Part 5):
+        Debug.Log(ana.name + " winning? " + ana.IsWinning());   // True
+        Debug.Log(bo.name + " winning? " + bo.IsWinning());     // False
+
+        // The Session 3 link: AddPoints only needed the points — Ana already
+        // knows her own name and score. The data lives ON the object now.
     }
 }
 
 
 // =====================================================================
-// The blueprint. We build it together — fields first, then a method, then
-// a question-answering (bool) method.
+// Player — the blueprint we built together: fields, then a method, then
+// the bool method.
 // =====================================================================
 
-public class Player
-{
-    // ▶ TYPE LIVE: fields (name, score), then AddPoints(int points),
-    //   then IsWinning().
+public class Player {
+    // FIELDS — what every player HAS
+    public string name;
+    public int score;
+
+    // METHOD — what a player can DO (acts on its OWN score)
+    public void AddPoints(int points) {
+        score = score + points;
+        Debug.Log(name + " scores " + points + "! Total: " + score);
+    }
+
+    // a method that answers a question
+    public bool IsWinning() {
+        return score >= 100;
+    }
 }

@@ -1,0 +1,18 @@
+{
+  // --- C# brace style for the coding course: opening { on the SAME line (K&R) ---
+  //
+  // What forces the brace onto its own line (Allman) on Enter is C# Dev Kit's
+  // "auto-insert" feature — "brace formatting adjustments on typing" — which is a
+  // SEPARATE switch from editor.formatOnType (that's why disabling format-on-type
+  // did nothing). Turning auto-insert off is the real fix:
+  "dotnet.autoInsert.enableAutoInsert": false,
+
+  // Also stop the formatter reformatting on save/type: Dev Kit's Roslyn formatter
+  // defaults to Allman and won't read .editorconfig inside a Unity project, and
+  // autoSave can be on — so a save could otherwise bounce the braces back.
+  "[csharp]": {
+    "editor.formatOnType": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnPaste": false
+  }
+}

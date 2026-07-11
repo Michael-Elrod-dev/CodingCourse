@@ -23,10 +23,8 @@ using UnityEngine;
 // surprises you, re-read the snippet until you can explain why the
 // Console is right. That moment is the whole assignment.
 
-public class Homework01_Review : MonoBehaviour
-{
-    void Start()
-    {
+public class Homework01_Review : MonoBehaviour {
+    void Start() {
         // =====================================================================
         // PART A — PREDICT THE OUTPUT
         // For each snippet: uncomment it, read it, write your prediction,
@@ -51,16 +49,11 @@ public class Homework01_Review : MonoBehaviour
         // --- A2 — if / else if order ------------------------------------------
 
         // int health = 20;
-        // if (health < 60)
-        // {
+        // if (health < 60) {
         //     Debug.Log("A2: Hurt");
-        // }
-        // else if (health < 30)
-        // {
+        // } else if (health < 30) {
         //     Debug.Log("A2: Critical");
-        // }
-        // else
-        // {
+        // } else {
         //     Debug.Log("A2: Healthy");
         // }
 
@@ -72,12 +65,9 @@ public class Homework01_Review : MonoBehaviour
 
         // bool isNight = true;
         // bool hasTorch = false;
-        // if (isNight && !hasTorch)
-        // {
+        // if (isNight && !hasTorch) {
         //     Debug.Log("A3: Too dark to travel.");
-        // }
-        // else
-        // {
+        // } else {
         //     Debug.Log("A3: On the road.");
         // }
 
@@ -88,8 +78,7 @@ public class Homework01_Review : MonoBehaviour
         // --- A4 — loop with a running total ------------------------------------
 
         // int chest = 0;
-        // for (int i = 1; i <= 3; i++)
-        // {
+        // for (int i = 1; i <= 3; i++) {
         //     chest = chest + i;
         // }
         // Debug.Log("A4: " + chest);
@@ -102,10 +91,8 @@ public class Homework01_Review : MonoBehaviour
 
         // int[] dmg = { 12, 3, 8, 20 };
         // int strongHits = 0;
-        // for (int i = 0; i < dmg.Length; i++)
-        // {
-        //     if (dmg[i] > 9)
-        //     {
+        // for (int i = 0; i < dmg.Length; i++) {
+        //     if (dmg[i] > 9) {
         //         strongHits = strongHits + 1;
         //     }
         // }
@@ -119,8 +106,7 @@ public class Homework01_Review : MonoBehaviour
         // (How many lines does this print, and what does each one say?)
 
         // int charge = 8;
-        // while (charge > 0)
-        // {
+        // while (charge > 0) {
         //     Debug.Log("A6: charge " + charge);
         //     charge = charge - 4;
         // }
@@ -186,8 +172,7 @@ public class Homework01_Review : MonoBehaviour
         // Expected output:  C2 Sum: 18  — but it logs 7. Find the bug.
         // int[] runes = { 5, 6, 7 };
         // int runeSum = 0;
-        // for (int i = 0; i < runes.Length; i++)
-        // {
+        // for (int i = 0; i < runes.Length; i++) {
         //     runeSum = runes[i];
         // }
         // Debug.Log("C2 Sum: " + runeSum);

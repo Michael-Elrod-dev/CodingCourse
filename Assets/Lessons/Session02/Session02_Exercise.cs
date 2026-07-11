@@ -6,10 +6,8 @@ using UnityEngine;
 // Type everything yourself — no copy-paste.
 // Press Play after each part to check your output before moving on.
 
-public class Session02_Exercise : MonoBehaviour
-{
-    void Start()
-    {
+public class Session02_Exercise : MonoBehaviour {
+    void Start() {
         // =====================================================================
         // WARM-UP — Conditionals refresher (&& and ||)
         // Last session ended at conditionals. Quick reminder before loops:
@@ -26,12 +24,9 @@ public class Session02_Exercise : MonoBehaviour
         int potions = 2;
         bool inCombat = true;
 
-        if (potions >= 1 && inCombat)
-        {
+        if (potions >= 1 && inCombat) {
             Debug.Log("Heal up!");
-        }
-        else
-        {
+        } else {
             Debug.Log("Hold position.");
         }
         // Output: Heal up!
@@ -41,8 +36,7 @@ public class Session02_Exercise : MonoBehaviour
         // PART 1 — Your first for loop
         // A for loop repeats a block a set number of times. The structure is:
         //
-        //   for (int i = 0; i < 5; i++)
-        //   {
+        //   for (int i = 0; i < 5; i++) {
         //       // this runs 5 times, with i going 0, 1, 2, 3, 4
         //   }
         //
@@ -63,8 +57,7 @@ public class Session02_Exercise : MonoBehaviour
         // and test i <= 5. Either works — pick one and understand why.
         // =====================================================================
 
-        for (int i = 0; i < 5; i++)
-        {
+        for (int i = 0; i < 5; i++) {
             Debug.Log("Wave " + (i + 1));
         }
         // Output:
@@ -93,8 +86,7 @@ public class Session02_Exercise : MonoBehaviour
         // =====================================================================
 
         int totalDamage = 0;            // declared OUTSIDE the loop
-        for (int i = 0; i < 6; i++)
-        {
+        for (int i = 0; i < 6; i++) {
             totalDamage = totalDamage + 10;   // or: totalDamage += 10;
         }
         Debug.Log("Total damage: " + totalDamage);
@@ -137,8 +129,7 @@ public class Session02_Exercise : MonoBehaviour
         // This is where loops and arrays click together. A for loop can walk
         // every index of an array using .Length as the test:
         //
-        //   for (int i = 0; i < enemyHealth.Length; i++)
-        //   {
+        //   for (int i = 0; i < enemyHealth.Length; i++) {
         //       // enemyHealth[i] is the value at the current index
         //   }
         //
@@ -155,8 +146,7 @@ public class Session02_Exercise : MonoBehaviour
         // index 5, which doesn't exist — an out-of-range error.
         // =====================================================================
 
-        for (int i = 0; i < enemyHealth.Length; i++)
-        {
+        for (int i = 0; i < enemyHealth.Length; i++) {
             Debug.Log("Enemy " + i + " has " + enemyHealth[i] + " HP");
         }
         // Output:
@@ -186,11 +176,9 @@ public class Session02_Exercise : MonoBehaviour
         
         int totalHP = 0;
         int highest = 0;
-        for (int i = 0; i < enemyHealth.Length; i++)
-        {
+        for (int i = 0; i < enemyHealth.Length; i++) {
             totalHP = totalHP + enemyHealth[i];
-            if (enemyHealth[i] > highest)
-            {
+            if (enemyHealth[i] > highest) {
                 highest = enemyHealth[i];
             }
         }
@@ -220,10 +208,8 @@ public class Session02_Exercise : MonoBehaviour
         // =====================================================================
 
         int woundedCount = 0;
-        for (int i = 0; i < enemyHealth.Length; i++)
-        {
-            if (enemyHealth[i] < 50)
-            {
+        for (int i = 0; i < enemyHealth.Length; i++) {
+            if (enemyHealth[i] < 50) {
                 Debug.Log("Enemy " + i + " is wounded");
                 woundedCount = woundedCount + 1;
             }
@@ -242,8 +228,7 @@ public class Session02_Exercise : MonoBehaviour
         // runs as long as a condition stays true — useful when you DON'T know
         // how many passes it'll take.
         //
-        //   while (someCondition)
-        //   {
+        //   while (someCondition) {
         //       // runs over and over until someCondition becomes false
         //   }
         //
@@ -266,8 +251,7 @@ public class Session02_Exercise : MonoBehaviour
         // =====================================================================
 
         int fuel = 10;
-        while (fuel > 0)
-        {
+        while (fuel > 0) {
             Debug.Log("Fuel remaining: " + fuel);
             fuel = fuel - 3;            // or: fuel -= 3;
         }
@@ -301,8 +285,7 @@ public class Session02_Exercise : MonoBehaviour
         // --- Challenge 1 ---
         // Log the numbers 0, 1, 2 using a for loop.
         // The semicolons inside the for are wrong.
-        for (int i = 0; i < 3; i++)
-        {
+        for (int i = 0; i < 3; i++) {
             Debug.Log(i);
         }
         // Output: 0, 1, 2
@@ -311,8 +294,7 @@ public class Session02_Exercise : MonoBehaviour
         // --- Challenge 2 ---
         // Log "Tick" three times with a for loop.
         // Something is missing from the loop header.
-        for (int i = 0; i < 3; i++)
-        {
+        for (int i = 0; i < 3; i++) {
             Debug.Log("Tick");
         }
         // Output: Tick, Tick, Tick
@@ -339,8 +321,7 @@ public class Session02_Exercise : MonoBehaviour
         // Loop through an array and log each value.
         // The loop body refers to the wrong thing.
         int[] gold = { 100, 250, 75 };
-        for (int i = 0; i < gold.Length; i++)
-        {
+        for (int i = 0; i < gold.Length; i++) {
             Debug.Log(gold[i]);
         }
         // Output: 100, 250, 75
@@ -350,8 +331,7 @@ public class Session02_Exercise : MonoBehaviour
         // A while loop that logs countdown 3, 2, 1.
         // One symbol is missing that the loop needs to work.
         int count = 3;
-        while (count > 0)
-        {
+        while (count > 0) {
             Debug.Log(count);
             count--;
         }
@@ -362,8 +342,7 @@ public class Session02_Exercise : MonoBehaviour
         // Log each item of the array. The counter is declared with the
         // wrong type for indexing.
         string[] names = { "Ana", "Bo", "Cy" };
-        for (int i = 0; i < names.Length; i++)
-        {
+        for (int i = 0; i < names.Length; i++) {
             Debug.Log(names[i]);
         }
         // Output: Ana, Bo, Cy
@@ -374,8 +353,7 @@ public class Session02_Exercise : MonoBehaviour
         // This compiles, but pressing Play throws an IndexOutOfRangeException.
         // Expected: logs 5, 10, 15 with no error. Fix the loop test.
         int[] mana = { 5, 10, 15 };
-        for (int i = 0; i < mana.Length; i++)
-        {
+        for (int i = 0; i < mana.Length; i++) {
             Debug.Log(mana[i]);
         }
         // Output: 5, 10, 15
@@ -389,8 +367,7 @@ public class Session02_Exercise : MonoBehaviour
         // The loop skips something. Find the bug.
         int[] hits = { 10, 20, 30 };
         int sum = 0;
-        for (int i = 0; i < hits.Length; i++)
-        {
+        for (int i = 0; i < hits.Length; i++) {
             sum = sum + hits[i];
         }
         Debug.Log("Sum: " + sum);
@@ -411,8 +388,7 @@ public class Session02_Exercise : MonoBehaviour
         // (If you do freeze Unity: the loop will eventually be force-killed,
         //  or you can avoid it entirely by fixing the code before running.)
         int gas = 5;
-        while (gas > 0)
-        {
+        while (gas > 0) {
             Debug.Log(gas);
             gas--;
         }

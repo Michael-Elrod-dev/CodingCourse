@@ -1,0 +1,20 @@
+# EditorConfig — coding-course house style.  https://editorconfig.org
+# Read automatically by VS Code (C# Dev Kit), Visual Studio, and Rider.
+# Drop this file in the project root and every editor formats the same way.
+root = true
+
+[*.cs]
+indent_style = space
+indent_size = 4
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# --- Brace placement (the whole point of this file) ---
+# Opening brace goes on the SAME line as the statement/function, with a space:
+#   void Start() {          if (health <= 0) {          public Enemy(...) {
+# ...not on its own line. The body still sits on its own indented lines.
+csharp_new_line_before_open_brace = none
+csharp_new_line_before_else = false
+csharp_new_line_before_catch = false
+csharp_new_line_before_finally = false
